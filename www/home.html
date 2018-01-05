@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=viewport-height, target-densitydpi=device-dpi"
+    />
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+   <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+   <script src='js/jquery-2.2.4.min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+   <style>
+body {
+    font-family: "Lato", sans-serif;
+	margin:0px;
+	background-color:#edeef0;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 20px 8px 20px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+	border-bottom: 1px dashed #ccc;
+	font-size:36px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -50px;
+    right: 25px;
+	margin-bottom::50px;
+    font-size: 120px;
+    margin-left: 50px;
+	border:none;
+}
+
+ .well {
+    min-height: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 1px;
+	border-top:2px solid #E6E6E6;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	font-size:20px;
+	color:#666666;
+	font-family: 'Barlow', sans-serif;
+}
+
+
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#AE0000;
+   color: white;
+   text-align: center;
+   padding:20px;
+}
+
+.topperone {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   color: white;
+
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+    <title>Registration</title>
+</head>
+
+<body>
+  <div  style="background-color:#AE0000; color:#FFFFFF; padding:16px 16px 16px 16px; margin-bottom:500px;" class="topperone">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#"><i class="fa fa-dashboard"></i> &nbsp;Dashboard</a>
+  <a href="#"><i class="fa fa-clone"></i> &nbsp;Free Questions</a>
+  <a href="#"><i class="fa fa-files-o"></i> &nbsp;Test Series</a>
+  <a href="#"><i class="fa fa-file-text"></i> &nbsp;Study Materials</a>
+  <a href="#"><i class="fa fa-video-camera"></i> &nbsp;Video Tutorials</a>
+  <a href="#"><i class="fa fa-comment"></i> &nbsp;Notifications</a>
+  <a href="#"><i class="fa fa-user"></i> &nbsp;Profile</a>
+  <a href="#"><i class="fa fa-home"></i> &nbsp;About Us</a>
+  <a href="#"><i class="fa fa-edit"></i> &nbsp;Terms of Use</a>
+  <a href="#"><i class="fa fa-life-ring"></i> &nbsp;Support</a>
+  <a href="#"><i class="fa fa-sign-out"></i> &nbsp;Log Out</a>
+</div>
+
+<!--<h2>Animated Sidenav Example</h2>
+<p>Click on the element below to open the side navigation menu.</p> -->
+
+<span style="font-size:60px;cursor:pointer;" onclick="openNav()">&#9776; NXIAS</span> 
+
+<span class="pull-right" style="font-size:40px; padding-top:20px;" ><i class="fa fa-files-o"></i> &nbsp;Test Series</span>
+</div>
+
+
+<div onclick="closeNav()">
+<div style="padding:120px 15px 15px 15px;"> 
+	<div class="well">
+    	<div class="alert alert-info text-center" style="background-color:#005959; color:#FFFFFF;">
+        <span style="font-size:40px;"><img src="images-nxias/profile-image.jpg" style="border-radius:50%; width:100px;" /> &nbsp;Subhomoy Samanta</span>
+        </div>
+        
+        <div class="alert alert-info">
+        
+                                <h1 class="alert-success text-center" style="padding:10px; border:1px solid #006633; margin-bottom:30px;">NXIAS Test Schedule</h1>
+                              
+                              <div style="overflow-y:scroll; padding-right:40px; height:1200px;">  
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                
+                                
+                                
+                                <hr class="style13">
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+                                
+                                <div style="font-size:30px;"> 
+                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> Ancient Indian History (Test Name)</span>
+                                   <span class="pull-right"><button class="btn btn-success" style="font-size:30px;"><i class="fa fa-cart-plus fa-2x"></i><br />Rs.200.00</button></span>
+                                   <br />
+                                    No of Questions : 50<br />
+                                    Available From : 03.01.2018 11:45 AM<br />
+                                    Available From : 02.02.2018 11:45 AM
+                                    </div>
+                                <hr class="style13">
+                                
+        						</div> <!-- scrollable div --->
+        </div>
+        
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="footer">
+  <p>
+  <i class="fa fa-dashboard fa-4x" style="margin-right:60px;"></i> <i class="fa fa-th fa-4x" style="margin-right:60px;"></i>
+  <i class="fa fa-caret-square-o-left fa-4x" style="margin-right:60px;"></i> <i class="fa fa-caret-square-o-right fa-4x" style="margin-right:60px;"></i>
+  </p>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "450px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+   
+</body>
+
+</html>
