@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" /> -->
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *"
+    />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+<style>
+body {
+	/*background: url(img/images-nxias/beforelogin-bg.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.topper {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color:#222;
+   color: white;
+   text-align: center;
+   padding:20px;
+   background: url(img/images-nxias/splash-bg.jpg) center center fixed;
+}
+
+/* for login form */
+.form-signin {
+  max-width: 80%;
+  padding: 0px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="text"] {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.colorgraph {
+  height: 7px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+/* for lgin form */
+
+
+</style>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="topper">
+        <img src="img/images-nxias/nxias-logo-round.JPG" width="15%" style="border-radius:50%;" />
+        <h1>ANNEX IAS ACADEMY</h1>
+    </div>
+    
+    <div style="margin-top:36%;" class="text-center">
+        <div>
+            <form name="Login_Form" class="form-signin">
+            <h1 class="form-signin-heading">Welcome Back! Please Sign In</h1>
+            <hr class="colorgraph">
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control " id="txtUsername" placeholder="Enter Username" autofocus="" style="font-size:36px;"
+                />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="txtPassword" placeholder="Password" style="font-size:36px;"  />
+            </div>
+
+            <button class="btn btn-lg btn-info btn-block" style="font-size:50px;" id="btnLogin" value="Login" type="button">Login</button>
+            </form>
+            <h2 class="text-center">
+                <a href="#" class="linkstyle">Forgot Password ?</a>
+            </h2>
+        </div>
+    
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <script>
+        var photoCount = 6;
+        var pieceCount = 6;
+        var onPhoto = 0;
+        var pieceCompleteCount = 0;
+        var delay;
+
+        var transitions = ["center", "random"];
+        var transitionType = 0;
+
+        $(document).ready(function () {
+            preload();
+        });
+
+        function preload() {
+            for (var i = 0; i < photoCount; i++) {
+                $("#preload").append(
+                    '<img src="https://placekitten.com/500/' + (500 + i) + '">'
+                );
+            }
+            $(window).load(function () {
+                setup();
+            });
+        }
+
+        function setup() {
+            $("#photo-holder").html("");
+            for (var i = 0; i < pieceCount; i++) {
+                var newWidth = (100 - 100 / pieceCount * i) / 100 * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
+                var newBackgroundSize = 100 + (100 - newWidth) / newWidth * 100; //100 + (100 - newWidth);
+                var newTop = 100 / pieceCount * i / 2;
+
+                $("#photo-holder").append(
+                    '<div class="section" id="piece' +
+                    i +
+                    '" style="top: ' +
+                    newTop +
+                    "%; left: " +
+                    newTop +
+                    "%; width: " +
+                    newWidth +
+                    "%; height: " +
+                    newWidth +
+                    "%; background-size:" +
+                    newBackgroundSize +
+                    "%; background-image: url('https://placekitten.com/500/" +
+                    (500 + onPhoto) +
+                    "')\"></div>"
+                );
+            }
+            nextSlide();
+        }
+
+        // function nextSlide() {
+        //     clearInterval(delay);
+        //     pieceCompleteCount = 0;
+        //     ++onPhoto;
+        //     if (onPhoto >= photoCount) {
+        //         onPhoto = 0;
+        //     }
+
+        //     for (var i = 0; i < pieceCount; i++) {
+        //         var spinDelay = 0;
+        //         var spin = 360;
+        //         var piece = $("#piece" + i);
+
+        //         switch (transitions[transitionType]) {
+        //             case "random":
+        //                 spinDelay = Math.random() / 2;
+        //                 spin = Math.random() * 360;
+        //                 break;
+        //             case "center":
+        //                 spinDelay = (pieceCount - i) / 10;
+        //                 spin = 181;
+        //                 break;
+        //         }
+
+        //         // TweenMax.to(piece, 1, {
+        //         //     delay: spinDelay,
+        //         //     directionalRotation: spin + "_long",
+        //         //     onComplete: completeRotation,
+        //         //     onCompleteParams: [piece],
+        //         //     ease: Power4.easeIn
+        //         // });
+        //     }
+        // }
+
+        // function completeRotation(piece) {
+        //     piece.css(
+        //         "background-image",
+        //         "url(#/500/" + (500 + onPhoto) + ")"
+        //     );
+        //     // TweenMax.to(piece, 2, {
+        //     //     directionalRotation: "0_short",
+        //     //     onComplete: finishPieceanimation,
+        //     //     ease: Elastic.easeOut
+        //     // });
+        // }
+
+        function finishPieceanimation() {
+            ++pieceCompleteCount;
+            if (pieceCompleteCount == pieceCount) {
+                delay = setInterval(nextSlide, 1000);
+            }
+        }
+        var photoCount = 6;
+        var pieceCount = 6;
+        var onPhoto = 0;
+        var pieceCompleteCount = 0;
+        var delay;
+
+        var transitions = ['center', 'random']
+        var transitionType = 0;
+
+        $(document).ready(function () {
+            preload();
+        });
+
+        function preload() {
+            for (var i = 0; i < photoCount; i++) {
+                $('#preload').append('<img src="https://placekitten.com/500/' + (500 + i) + '">')
+            };
+            $(window).load(function () {
+                setup();
+            });
+        }
+
+        function setup() {
+            $('#photo-holder').html('');
+            for (var i = 0; i < pieceCount; i++) {
+                var newWidth = (((100 - (100 / pieceCount) * i)) / 100) * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
+                var newBackgroundSize = 100 + (100 - newWidth) / newWidth * 100; //100 + (100 - newWidth);
+                var newTop = ((100 / pieceCount) * i) / 2;
+
+                $('#photo-holder').append('<div class="section" id="piece' + i + '" style="top: ' + newTop + '%; left: ' + newTop + '%; width: ' + newWidth + '%; height: ' + newWidth + '%; background-size:' + newBackgroundSize + '%; background-image: url(img/images-nxias/splash1.jpg)"></div>')
+            };
+            nextSlide();
+        }
+
+        function nextSlide() {
+            clearInterval(delay);
+            pieceCompleteCount = 0;
+            ++onPhoto;
+            if (onPhoto >= photoCount) {
+                onPhoto = 0;
+            }
+
+            for (var i = 0; i < pieceCount; i++) {
+                var spinDelay = 0;
+                var spin = 360;
+                var piece = $('#piece' + i);
+
+                switch (transitions[transitionType]) {
+                    case 'random':
+                        spinDelay = Math.random() / 2;
+                        spin = Math.random() * 360;
+                        break;
+                    case 'center':
+                        spinDelay = (pieceCount - i) / 10;
+                        spin = 181;
+                        break;
+                }
+
+                // TweenMax.to(piece, 1, {
+                //     delay: spinDelay,
+                //     directionalRotation: spin + '_long',
+                //     onComplete: completeRotation,
+                //     onCompleteParams: [piece],
+                //     ease: Power4.easeIn
+                // })
+            }
+        }
+
+        function completeRotation(piece) {
+            piece.css('background-image', 'url(img/images-nxias/splash2.jpg)');
+            TweenMax.to(piece, 2, {
+                directionalRotation: '0_short',
+                onComplete: finishPieceanimation,
+                ease: Elastic.easeOut
+            })
+        }
+
+        function finishPieceanimation() {
+            ++pieceCompleteCount;
+            if (pieceCompleteCount == pieceCount) {
+                delay = setInterval(nextSlide, 1000);
+            }
+        }
+    </script>
+</body>
+
+</html>

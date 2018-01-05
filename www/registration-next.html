@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *"
+    />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+   <script src='js/jquery-2.2.4.min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <style>
+body {
+	/*background: url(images-nxias/beforelogin-bg.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.topper {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color:#222;
+   color: white;
+   text-align: center;
+   padding:20px;
+   background: url(img/images-nxias/splash-bg.jpg) center center fixed;
+}
+
+/* for login form */
+.form-signin {
+  max-width: 80%;
+  padding: 0px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="text"] {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.colorgraph {
+  height: 7px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+/* for lgin form */
+
+
+</style>
+    <title>Registration</title>
+</head>
+
+<body>
+   <div class="topper">
+  <img src="img/images-nxias/nxias-logo-round.JPG" width="15%" style="border-radius:50%;" />
+  <h1>ANNEX IAS ACADEMY</h1>
+</div>
+
+<div style="margin-top:36%;" class="text-center">
+<div>
+                <form action="" method="post" name="Login_Form" class="form-signin">       
+		    <h1 class="form-signin-heading">Register Yourself</h1>
+			  <hr class="colorgraph"><br>
+			  <div class="form-group">
+			  <select class="form-control" name="mode" id="mode" style="font-size:36px;" required>
+              	<option value="">Select Mode</option>
+                <option value="On Campus">On Campus</option>
+                <option value="Online">Online</option>
+              </select>
+              </div>
+              
+              <div class="form-group">
+			  <select class="form-control" name="state" id="state" style="font-size:36px;" required >
+              	<option value="">Select State</option>
+                <option value="UP">Uttar Pradesh</option>
+                <option value="WB">West Bengal</option>
+              </select>
+              </div>
+              
+              <div class="form-group">
+			  <select class="form-control" name="city" id="city" style="font-size:36px;" required >
+              	<option value="">Select City</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kolkata">Kolkata</option>
+              </select>
+              </div>
+              
+              <div class="form-group">
+			  <select class="form-control" name="course" id="course" style="font-size:36px;" required >
+              	<option value="">Select Course</option>
+                <option value="C1">Course 1</option>
+                <option value="C2">Course 2</option>
+              </select>
+              </div>
+                
+			 
+			  <button class="btn btn-lg btn-info btn-block" style="font-size:40px;" id="logbtn"  name="Submit" value="Login" type="button">Register Now</button>  			
+		</form>	
+
+</div>
+
+</div>
+    <script type="text/javascript" src="cordova.js"></script>0
+    <script type="text/javascript" src="js/registration_next.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+   
+</body>
+
+</html>
