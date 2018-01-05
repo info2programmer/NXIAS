@@ -57,21 +57,21 @@ var app = {
 							$('#msg').css('color','red');
 							$('#txtUsername').val('');
 							$('#msg').text('Sorry! Please Try Again');
-							$('#btnforget').prop('enabled', true);
+							$('#btnforget').prop('disabled', false);
                         }
 						else if (response==1){
 							$('#msg').css('display','block');
 							$('#msg').css('color','green');
 							$('#txtUsername').val('');
 							$('#msg').text('Email Sent to Your Registered Email Id');
-							$('#btnforget').prop('enabled', true);
+							$('#btnforget').prop('disabled', false);
 							}
                         else{
                            $('#msg').css('display','block');
 							$('#msg').css('color','red');
 							$('#txtUsername').val('');
 							$('#msg').text('Sorry! Mail Id Not Registered With Us');
-							$('#btnforget').prop('enabled', true);
+							$('#btnforget').prop('disabled', false);
                         }
                     }
                 });
