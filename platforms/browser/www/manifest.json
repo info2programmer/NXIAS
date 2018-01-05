@@ -1,11 +1,12 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "helloworld",
-  "short_name": "helloworld",
+  "name": "NXIAS",
+  "short_name": "NXIAS",
   "version": "com.phonegap.helloworld",
-  "description": "Hello World sample application that responds to the deviceready event.",
-  "author": "PhoneGap Team",
+  "description": "NXIAS App",
+  "author": "Projukti Team",
   "icons": [],
+  "orientation": "any",
   "start_url": "index.html"
 }
