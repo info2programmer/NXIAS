@@ -70,6 +70,7 @@ var app = {
                             $('#txtPassword').css('border-color', 'red');
                             $('#txtUsername').val('');
                             $('#txtPassword').val('');
+                            $('#btnLogin').prop('disabled', false);
                         }
                     }
                 });
