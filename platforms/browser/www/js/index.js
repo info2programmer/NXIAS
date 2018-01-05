@@ -41,7 +41,7 @@ var app = {
         //                            'Device Platform: ' + device.platform + '<br />' + 
         //                            'Device UUID: '     + device.uuid     + '<br />' + 
         //                            'Device Version: '  + device.version  + '<br />';
-        var datas = { 'div_id': 1, 'dev_name': device.name };
+        var datas = { 'div_id': device.uuid, 'dev_name': device.name };
         console.log(datas);
         $.ajax({
             type: "post",
@@ -51,7 +51,13 @@ var app = {
             success: function (response) {
                 // alert(response);
                 // console.log(response);
-                window.location.href = "beforelogin.html";
+                if (response==0){
+                    window.location.href = "beforelogin.html";
+                }
+                else{
+                    window.location.href = "home.html";
+                }
+                
             }
         });
     },
