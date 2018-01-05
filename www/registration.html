@@ -154,11 +154,13 @@ input[type="password"] {
 					$('#chkuser').css('display','block');
 					$('#chkuser').css('color','green');
 					$('#chkuser').text('Available');
+					$('#btnReg').css('display','block');
                 }
                 else{
 					$('#chkuser').css('display','block');
 					$('#chkuser').css('color','red');
 					$('#chkuser').text('Already Exist');
+					$('#btnReg').css('display','none');
 					window.setTimeout(function(){
 					window.location.href = "login.html";
 					}, 3000);

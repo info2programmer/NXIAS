@@ -109,23 +109,23 @@ input[type="password"] {
             <hr class="colorgraph">
             <br>
             <div class="form-group">
-                <input type="text" class="form-control " id="txtUsername" placeholder="Enter Username" autofocus="" style="font-size:36px;"
+                <input type="text" class="form-control " id="txtUsername" placeholder="Enter Username" required autofocus="" style="font-size:36px;"
                 />
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="txtPassword" placeholder="Password" style="font-size:36px;"  />
-            </div>
 
-            <button class="btn btn-lg btn-info btn-block" style="font-size:50px;" id="btnLogin" value="Login" type="button">Login</button>
+            <button class="btn btn-lg btn-info btn-block" style="font-size:50px;" id="btnforget" value="Login" type="button">Submit</button>
             </form>
+            <span class="text-center" id="msg" style="display:none;">
+                
+            </span>
             <h2 class="text-center">
-                <a href="forget_pass.html" class="linkstyle">Forgot Password ?</a>
+                <a href="login.html" class="linkstyle">Login</a>
             </h2>
         </div>
     
     </div>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/forgetpass.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
