@@ -49,6 +49,8 @@ var app = {
                 data: datas,
                 success: function (response) {
                     if (response == 1) {
+                        localStorage.email="";
+                        localStorage.login="false";
                         window.location.href = "beforelogin.html";
                     }
                 }
