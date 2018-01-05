@@ -56,7 +56,9 @@ var app = {
 
         // This Function Get All Data Form Server
         var urls = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
-        var datas = { 'user_email': localStorage.getItem('userInfo')};
+        var userdata = localStorage.getItem('userInfo');
+        // console.log(userdata);
+        var datas = { 'email': userdata };
         $.ajax({
             type: "post",
             url: urls,
