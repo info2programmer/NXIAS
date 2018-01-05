@@ -2,294 +2,263 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>NXIAS</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
+    <link rel="stylesheet" type="text/css" href="css/index.css" /> 
+    <script src='js/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js'></script>
+    <style>
+        body {
+            background-color: #222;
+            background-image: url(img/images-nxias/splash-bg.jpg);
+        }
 
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js'></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
-<style>
-body {
-  background-color: #222;
-    background-image:url(img/images-nxias/splash-bg.jpg);
-}
+        #preload {
+            display: none;
+        }
 
-#preload {
-  display: none;
-}
+        .holder {
+            width: 400px;
+            height: 400px;
+            border: 5px solid #ffffff;
+            margin: 50% auto;
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px red;
+        }
 
-.holder {
-  width: 400px;
-  height: 400px;
-  border: 5px solid #ffffff;
-  margin: 50% auto;
-  position: relative;
-  background-color: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 15px red;
-}
+        #photo-holder {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
 
-#photo-holder {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
+        .section {
+            background-repeat: no-repeat;
+            background-position: center center;
+            overflow: hidden;
+            border-radius: 50%;
+            position: absolute;
 
-.section {
-  background-repeat: no-repeat;
-  background-position: center center;
-  overflow: hidden;
-  border-radius: 50%;
-  position: absolute;
-                   
-transition: background-image 1s ease;
-}
-
-</style>
-
-
+            transition: background-image 1s ease;
+        }
+    </style>
+    <title>Loding...</title>
 </head>
 
 <body>
+    <div class="holder">
+        <div id="photo-holder"></div>
+    </div>
+    <div id="preload"></div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <script>
+        var photoCount = 6;
+        var pieceCount = 6;
+        var onPhoto = 0;
+        var pieceCompleteCount = 0;
+        var delay;
 
-<div class="holder">
-	<div id="photo-holder"></div>
-</div>
-<div id="preload"></div>
+        var transitions = ["center", "random"];
+        var transitionType = 0;
 
+        $(document).ready(function () {
+            preload();
+        });
+
+        function preload() {
+            for (var i = 0; i < photoCount; i++) {
+                $("#preload").append(
+                    '<img src="https://placekitten.com/500/' + (500 + i) + '">'
+                );
+            }
+            $(window).load(function () {
+                setup();
+            });
+        }
+
+        function setup() {
+            $("#photo-holder").html("");
+            for (var i = 0; i < pieceCount; i++) {
+                var newWidth = (100 - 100 / pieceCount * i) / 100 * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
+                var newBackgroundSize = 100 + (100 - newWidth) / newWidth * 100; //100 + (100 - newWidth);
+                var newTop = 100 / pieceCount * i / 2;
+
+                $("#photo-holder").append(
+                    '<div class="section" id="piece' +
+                    i +
+                    '" style="top: ' +
+                    newTop +
+                    "%; left: " +
+                    newTop +
+                    "%; width: " +
+                    newWidth +
+                    "%; height: " +
+                    newWidth +
+                    "%; background-size:" +
+                    newBackgroundSize +
+                    "%; background-image: url('https://placekitten.com/500/" +
+                    (500 + onPhoto) +
+                    "')\"></div>"
+                );
+            }
+            nextSlide();
+        }
+
+        function nextSlide() {
+            clearInterval(delay);
+            pieceCompleteCount = 0;
+            ++onPhoto;
+            if (onPhoto >= photoCount) {
+                onPhoto = 0;
+            }
+
+            for (var i = 0; i < pieceCount; i++) {
+                var spinDelay = 0;
+                var spin = 360;
+                var piece = $("#piece" + i);
+
+                switch (transitions[transitionType]) {
+                    case "random":
+                        spinDelay = Math.random() / 2;
+                        spin = Math.random() * 360;
+                        break;
+                    case "center":
+                        spinDelay = (pieceCount - i) / 10;
+                        spin = 181;
+                        break;
+                }
+
+                TweenMax.to(piece, 1, {
+                    delay: spinDelay,
+                    directionalRotation: spin + "_long",
+                    onComplete: completeRotation,
+                    onCompleteParams: [piece],
+                    ease: Power4.easeIn
+                });
+            }
+        }
+
+        function completeRotation(piece) {
+            piece.css(
+                "background-image",
+                "url(#/500/" + (500 + onPhoto) + ")"
+            );
+            TweenMax.to(piece, 2, {
+                directionalRotation: "0_short",
+                onComplete: finishPieceanimation,
+                ease: Elastic.easeOut
+            });
+        }
+
+        function finishPieceanimation() {
+            ++pieceCompleteCount;
+            if (pieceCompleteCount == pieceCount) {
+                delay = setInterval(nextSlide, 1000);
+            }
+        }
+        var photoCount = 6;
+        var pieceCount = 6;
+        var onPhoto = 0;
+        var pieceCompleteCount = 0;
+        var delay;
+
+        var transitions = ['center', 'random']
+        var transitionType = 0;
+
+        $(document).ready(function () {
+            preload();
+        });
+
+        function preload() {
+            for (var i = 0; i < photoCount; i++) {
+                $('#preload').append('<img src="https://placekitten.com/500/' + (500 + i) + '">')
+            };
+            $(window).load(function () {
+                setup();
+            });
+        }
+
+        function setup() {
+            $('#photo-holder').html('');
+            for (var i = 0; i < pieceCount; i++) {
+                var newWidth = (((100 - (100 / pieceCount) * i)) / 100) * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
+                var newBackgroundSize = 100 + (100 - newWidth) / newWidth * 100; //100 + (100 - newWidth);
+                var newTop = ((100 / pieceCount) * i) / 2;
+
+                $('#photo-holder').append('<div class="section" id="piece' + i + '" style="top: ' + newTop + '%; left: ' + newTop + '%; width: ' + newWidth + '%; height: ' + newWidth + '%; background-size:' + newBackgroundSize + '%; background-image: url(img/images-nxias/splash1.jpg)"></div>')
+            };
+            nextSlide();
+        }
+
+        function nextSlide() {
+            clearInterval(delay);
+            pieceCompleteCount = 0;
+            ++onPhoto;
+            if (onPhoto >= photoCount) {
+                onPhoto = 0;
+            }
+
+            for (var i = 0; i < pieceCount; i++) {
+                var spinDelay = 0;
+                var spin = 360;
+                var piece = $('#piece' + i);
+
+                switch (transitions[transitionType]) {
+                    case 'random':
+                        spinDelay = Math.random() / 2;
+                        spin = Math.random() * 360;
+                        break;
+                    case 'center':
+                        spinDelay = (pieceCount - i) / 10;
+                        spin = 181;
+                        break;
+                }
+
+                TweenMax.to(piece, 1, {
+                    delay: spinDelay,
+                    directionalRotation: spin + '_long',
+                    onComplete: completeRotation,
+                    onCompleteParams: [piece],
+                    ease: Power4.easeIn
+                })
+            }
+        }
+
+        function completeRotation(piece) {
+            piece.css('background-image', 'url(img/images-nxias/splash2.jpg)');
+            TweenMax.to(piece, 2, {
+                directionalRotation: '0_short',
+                onComplete: finishPieceanimation,
+                ease: Elastic.easeOut
+            })
+        }
+
+        function finishPieceanimation() {
+            ++pieceCompleteCount;
+            if (pieceCompleteCount == pieceCount) {
+                delay = setInterval(nextSlide, 1000);
+            }
+        }
+    </script>
 </body>
 
-<script>
-var photoCount = 6;
-var pieceCount = 6;
-var onPhoto = 0;
-var pieceCompleteCount = 0;
-var delay;
-
-var transitions = ["center", "random"];
-var transitionType = 0;
-
-$(document).ready(function() {
-	preload();
-});
-
-function preload() {
-	for (var i = 0; i < photoCount; i++) {
-		$("#preload").append(
-			'<img src="https://placekitten.com/500/' + (500 + i) + '">'
-		);
-	}
-	$(window).load(function() {
-		setup();
-	});
-}
-
-function setup() {
-	$("#photo-holder").html("");
-	for (var i = 0; i < pieceCount; i++) {
-		var newWidth = (100 - 100 / pieceCount * i) / 100 * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
-		var newBackgroundSize = 100 + (100 - newWidth) / newWidth * 100; //100 + (100 - newWidth);
-		var newTop = 100 / pieceCount * i / 2;
-
-		$("#photo-holder").append(
-			'<div class="section" id="piece' +
-			i +
-			'" style="top: ' +
-			newTop +
-			"%; left: " +
-			newTop +
-			"%; width: " +
-			newWidth +
-			"%; height: " +
-			newWidth +
-			"%; background-size:" +
-			newBackgroundSize +
-			"%; background-image: url('https://placekitten.com/500/" +
-			(500 + onPhoto) +
-			"')\"></div>"
-		);
-	}
-	nextSlide();
-}
-
-function nextSlide() {
-	clearInterval(delay);
-	pieceCompleteCount = 0;
-	++onPhoto;
-	if (onPhoto >= photoCount) {
-		onPhoto = 0;
-	}
-
-	for (var i = 0; i < pieceCount; i++) {
-		var spinDelay = 0;
-		var spin = 360;
-		var piece = $("#piece" + i);
-
-		switch (transitions[transitionType]) {
-			case "random":
-				spinDelay = Math.random() / 2;
-				spin = Math.random() * 360;
-				break;
-			case "center":
-				spinDelay = (pieceCount - i) / 10;
-				spin = 181;
-				break;
-		}
-
-		TweenMax.to(piece, 1, {
-			delay: spinDelay,
-			directionalRotation: spin + "_long",
-			onComplete: completeRotation,
-			onCompleteParams: [piece],
-			ease: Power4.easeIn
-		});
-	}
-}
-
-function completeRotation(piece) {
-	piece.css(
-		"background-image",
-		"url(#/500/" + (500 + onPhoto) + ")"
-	);
-	TweenMax.to(piece, 2, {
-		directionalRotation: "0_short",
-		onComplete: finishPieceanimation,
-		ease: Elastic.easeOut
-	});
-}
-
-function finishPieceanimation() {
-	++pieceCompleteCount;
-	if (pieceCompleteCount == pieceCount) {
-		delay = setInterval(nextSlide, 1000);
-	}
-}
-var photoCount = 6;
-var pieceCount = 6;
-var onPhoto = 0;
-var pieceCompleteCount = 0;
-var delay;
-
-var transitions = ['center', 'random']
-var transitionType = 0;
-
-$(document).ready(function() 
-{
-	preload();
-});
-
-function preload()
-{
-	for (var i = 0; i < photoCount; i++) 
-	{
-		$('#preload').append('<img src="https://placekitten.com/500/' + (500 + i) + '">')
-	};
-	$(window).load(function() 
-	{
-		setup();
-	});
-}
-
-function setup()
-{
-	$('#photo-holder').html('');
-	for (var i = 0; i < pieceCount; i++) 
-	{
-		var newWidth = (((100-(100 / pieceCount) * i))/100) * 100; //((pieceWidth - ((pieceWidth / pieceCount) * i)) / pieceWidth) * 100;
-		var newBackgroundSize = 100 + (100-newWidth)/newWidth * 100; //100 + (100 - newWidth);
-		var newTop = ((100 / pieceCount) * i)/2;
-		
-		$('#photo-holder').append('<div class="section" id="piece'+i+'" style="top: ' + newTop + '%; left: ' + newTop + '%; width: ' + newWidth + '%; height: ' + newWidth + '%; background-size:'+newBackgroundSize+'%; background-image: url(img/images-nxias/splash1.jpg)"></div>')
-	};
-	nextSlide(); 
-}
-
-function nextSlide()
-{
-	clearInterval(delay);
-	pieceCompleteCount = 0;
-	++onPhoto;
-	if(onPhoto >= photoCount)
-	{
-		onPhoto = 0;
-	}
-
-	for(var i=0; i < pieceCount; i++)
-	{
-		var spinDelay = 0;
-		var spin = 360;
-		var piece = $('#piece'+i);
-		
-		switch(transitions[transitionType])
-		{
-			case 'random':
-				spinDelay = Math.random()/2;
-				spin = Math.random()*360;
-				break;
-			case 'center':
-				spinDelay = (pieceCount-i)/10;
-				spin = 181;
-				break;
-		}
-		
-		TweenMax.to(piece, 1, {
-			delay: spinDelay,
-			directionalRotation: spin + '_long', 
-			onComplete: completeRotation, 
-			onCompleteParams: [piece], 
-			ease: Power4.easeIn
-		})
-	}
-}
-
-function completeRotation(piece)
-{
-	piece.css('background-image', 'url(img/images-nxias/splash2.jpg)');
-	TweenMax.to(piece, 2, {
-		directionalRotation: '0_short', 
-		onComplete: finishPieceanimation, 
-		ease: Elastic.easeOut
-	})	
-}
-
-function finishPieceanimation()
-{
-	++pieceCompleteCount;
-	if(pieceCompleteCount == pieceCount)
-	{
-		delay = setInterval(nextSlide, 1000);
-	}
-}
-</script>
-<script type="text/javascript" charset="utf-8">
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        var element = document.getElementById('deviceProperties');
-
-        //element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
-//                            'Device Cordova: '  + device.cordova  + '<br />' + 
-//                            'Device Platform: ' + device.platform + '<br />' + 
-//                            'Device UUID: '     + device.uuid     + '<br />' + 
-//                            'Device Version: '  + device.version  + '<br />';
-		var datas = { 'div_id': device.uuid };
-		console.log(datas);
-		$.ajax({
-			type: "post",
-			url: "http://localhost/NXIAS_APIS/reg.php",
-			data: datas,
-			dataType: "html",
-			success: function (response) {
-				// alert(response);
-				 if (response==0){
-                    window.location.href = "beforelogin.html";
-                }
-                else{
-                    window.location.href = "home.html";
-                }
-			}
-		});
-    }
-    </script>
 </html>
-
