@@ -53,7 +53,7 @@ var app = {
                 console.log(datas);
                 $.ajax({
                     type: "post",
-                    url: "http://localhost/NXIAS_APIS/chklogin.php",
+                    url: "http://spmgroupindia.com/NXIAS_APIS/chklogin.php",
                     data: datas,
                     // dataType: "dataType",
                     beforeSend: function () {

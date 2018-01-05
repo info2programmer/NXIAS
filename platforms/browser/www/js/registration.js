@@ -75,7 +75,7 @@ var app = {
             else{
                 $.ajax({
                     type: "post",
-                    url: "http://localhost/NXIAS_APIS/reg.php",
+                    url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
                     data: datas,
 					//datatype:'html'
                     beforeSend: function () {

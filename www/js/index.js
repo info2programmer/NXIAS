@@ -45,7 +45,7 @@ var app = {
         console.log(datas);
         $.ajax({
             type: "post",
-            url: "http://localhost/NXIAS_APIS/reg.php",
+            url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
             data: datas,
             dataType: "html",
             success: function (response) {
