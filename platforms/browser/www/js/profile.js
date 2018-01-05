@@ -39,7 +39,8 @@ var app = {
         // This Code For Logout
         $('#btnLogout').click(function () {
             // alert();
-            var userdata = localStorage.getItem('userInfo');
+            // var userdata = localStorage.getItem('userInfo');
+            var userdata = localStorage.email;
             // console.log(userdata);
             var datas = { 'email': userdata };
             $.ajax({
@@ -52,11 +53,12 @@ var app = {
                     }
                 }
             });
+
         });
 
         // This Function Get All Data Form Server
         var urls = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
-        var userdata = localStorage.getItem('userInfo');
+        var userdata = localStorage.email;
         // console.log(userdata);
         var datas = { 'email': userdata };
         $.ajax({

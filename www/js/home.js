@@ -35,8 +35,9 @@ var app = {
     onDeviceReady: function () {
         $('#btnLogout').click(function () { 
             // alert();
-            var userdata = localStorage.getItem('userInfo');
-            console.log(userdata);
+            // var userdata = localStorage.getItem('userInfo');
+            var userdata = localStorage.email;
+            // console.log(userdata);
             var datas = {'email': userdata };
             $.ajax({
                 type: "post",

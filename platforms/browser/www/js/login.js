@@ -62,8 +62,10 @@ var app = {
                     success: function (response) {
                         if (response!=0){
                             localStorage.setItem('userInfo', response.d);
+                            localStorage.login = "true";
+                            localStorage.email=$('#txtUsername').val();
                             window.location.href = "home.html";
-                            console.log(response.d);
+                            // console.log(localStorage.email);
                         }
                         else{
                             $('#txtUsername').css('border-color', 'red');
