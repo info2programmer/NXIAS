@@ -51,12 +51,12 @@ var app = {
             success: function (response) {
                 // alert(response);
                 // console.log(response);
-                if (response==0){
-                    window.location.href = "beforelogin.html";
-                }
-                else{
-                    window.location.href = "home.html";
-                }
+                // if (response==0){
+                //     window.location.href = "beforelogin.html";
+                // }
+                // else{
+                //     window.location.href = "home.html";
+                // }
                 
             }
         });
