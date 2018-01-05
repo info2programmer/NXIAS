@@ -78,15 +78,18 @@ var app = {
                     success: function (response) {
                         $('#logbtn').prop('disabled', false);
                         console.log(response);
-                        if (response=="1"){
-							$('#msg').css('display','none');
-                         window.location.href = "home.html";   
+                        var resp = response.split("-");
+                        if (resp[0]=="1"){
+                            $('#msg').css('display','none');
+                            localStorage.login = "true";
+                            localStorage.email = resp[1];
+                            window.location.href = "home.html";   
                         }
 						else {
 							$('#msg').css('display','block');
 							$('#msg').css('color','red');
 							$('#msg').text('Slow Day! Please Try Again After Sometime');
-							}
+						}
                     }
                 });
             }
