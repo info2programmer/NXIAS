@@ -110,7 +110,7 @@ input[type="password"] {
 			  <input type="text" class="form-control " name="name" placeholder="Name" id="name" required="" autofocus="" style="font-size:36px;" />
               </div>
               <div class="form-group">
-			  <input type="email" class="form-control" name="email" id="email" placeholder="Email ID" required="" style="font-size:36px;" />    
+			  <input type="email" class="form-control" name="email" id="email" placeholder="Email ID" required="" style="font-size:36px;" onblur="return chkuser(this.value)"/> <span id="chkuser" style="display:none;"></span>   
               </div> 	
               <div class="form-group">
 			  <input type="number" class="form-control" name="mob" id="phn" placeholder="Mobile Number" required="" style="font-size:36px;" />    
@@ -137,7 +137,37 @@ input[type="password"] {
     <script type="text/javascript">
         app.initialize();
     </script>
+   <script>
+   function chkuser(uval){
    
+    var datas = { 'user_id': uval };
+        //console.log(datas);
+        $.ajax({
+            type: "post",
+            url: "http://spmgroupindia.com/NXIAS_APIS/chkduplicateuser.php",
+            data: datas,
+            dataType: "html",
+            success: function (response) {
+                // alert(response);
+                // console.log(response);
+                if (response==0){
+					$('#chkuser').css('display','block');
+					$('#chkuser').css('color','green');
+					$('#chkuser').text('Available');
+                }
+                else{
+					$('#chkuser').css('display','block');
+					$('#chkuser').css('color','red');
+					$('#chkuser').text('Already Exist');
+					window.setTimeout(function(){
+					window.location.href = "login.html";
+					}, 3000);
+                }
+                
+            }
+        });
+   }
+   </script>
 </body>
 
 </html>

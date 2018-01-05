@@ -42,7 +42,7 @@ var app = {
         //                            'Device UUID: '     + device.uuid     + '<br />' + 
         //                            'Device Version: '  + device.version  + '<br />';
         var datas = { 'div_id': device.uuid, 'dev_name': device.name };
-        console.log(datas);
+        //console.log(datas);
         $.ajax({
             type: "post",
             url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
@@ -52,10 +52,14 @@ var app = {
                 // alert(response);
                 // console.log(response);
                 if (response==0){
-                    window.location.href = "beforelogin.html";
+					window.setTimeout(function(){
+					window.location.href = "beforelogin.html";
+					}, 4000);
                 }
                 else{
-                    window.location.href = "home.html";
+					window.setTimeout(function(){
+					window.location.href = "home.html";
+					}, 4000);
                 }
                 
             }
