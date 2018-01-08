@@ -50,7 +50,7 @@ var app = {
                 var user_name=$('#txtUsername').val();
                 var password = $('#txtPassword').val();
                 var datas = { 'user_name': user_name, 'password': password};
-                console.log(datas);
+               
                 $.ajax({
                     type: "post",
                     url: "http://spmgroupindia.com/NXIAS_APIS/chklogin.php",
@@ -60,10 +60,11 @@ var app = {
                         $('#btnLogin').prop('disabled', true);
                     },
                     success: function (response) {
-                        if (response!=0){
-                            localStorage.setItem('userInfo', response.d);
+						var resp = response.split('-');
+                        if (resp[0]!=0){
                             localStorage.login = "true";
-                            localStorage.email=$('#txtUsername').val();
+                            localStorage.email=resp[0];
+							localStorage.name=resp[1];
                             // localStorage.name = response
                             window.location.href = "home.html";
                             // console.log(localStorage.email);

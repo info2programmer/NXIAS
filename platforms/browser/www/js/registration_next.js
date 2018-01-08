@@ -83,6 +83,7 @@ var app = {
                             $('#msg').css('display','none');
                             localStorage.login = "true";
                             localStorage.email = resp[1];
+							localStorage.name = resp[2];
                             window.location.href = "home.html";   
                         }
 						else {
