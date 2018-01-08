@@ -198,7 +198,7 @@ var app = {
                 $('#txtPhone').css('border-color', 'red');
             }
             else {
-               updateProfile(name, updateFld);
+                updateProfile(phone, updateFld);
             }
         });
 
@@ -210,7 +210,7 @@ var app = {
                 $('#txtQualification').css('border-color', 'red');
             }
             else {
-                updateProfile(name, updateFld);
+                updateProfile(qualification, updateFld);
             }
         });
 
@@ -234,7 +234,7 @@ var app = {
                 $('#ddlState').css('border-color', 'red');
             }
             else {
-                updateProfile(name, updateFld);
+                updateProfile(state, updateFld);
             }
         });
 
@@ -246,7 +246,7 @@ var app = {
                 $('#ddlCity').css('border-color', 'red');
             }
             else {
-                updateProfile(name, updateFld);
+                updateProfile(city, updateFld);
             }
         });
 
@@ -285,13 +285,23 @@ var app = {
 
 
 function updateProfile(updateValue,updateFld){
+    var urls ="http://spmgroupindia.com/NXIAS_APIS/update_profile.php"
+    datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email};
     $.ajax({
         type: "POST",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
+        url: urls,
+        data: datas,
+        dataType: 'html',
+        beforeSend: function () {
+            // $('#btnLogin').prop('disabled', true);
+            // Loading Status will be shown here
+        },
         success: function (response) {
-            
+            // console.log(response);
+            if (response=="1"){
+                alert(updateFld + ' Change To ' + updateValue+' Successfully');
+                window.location.href = "profile.html";
+            }
         }
     });
 }
