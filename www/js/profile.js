@@ -74,7 +74,7 @@ var app = {
                 $('#mailf').text(dataReq[1]);
                 $('#nof').text(dataReq[2]);
                 $('#qualif').text(dataReq[3]);
-                $('#modf').text(dataReq[4]);
+                $('#modef').text(dataReq[4]);
                 $('#statef').text(dataReq[5]);
                 $('#cityf').text(dataReq[6]);
                 $('#coursef').text(dataReq[7]);
