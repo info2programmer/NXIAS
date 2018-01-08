@@ -137,6 +137,7 @@ input[type="password"] {
     <script type="text/javascript">
         app.initialize();
     </script>
+    <script>(function(window){window.alert=function(text,opo){ navigator.nativeAlert.show(text);};}(window));</script>
    <script>
    function chkuser(uval){
    
@@ -161,6 +162,7 @@ input[type="password"] {
 					$('#chkuser').css('color','red');
 					$('#chkuser').text('Already Exist');
 					$('#btnReg').css('display','none');
+					navigator.notification.beep(2);
 					showAlert();
 					window.location.href = "login.html";
                 }

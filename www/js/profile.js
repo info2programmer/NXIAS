@@ -122,12 +122,18 @@ var app = {
         });
 
         // Mode Edit Button Click
-        $('#btnQualificationEdit').click(function () {
-            $('#btnQualificationSubmit').css('display', 'block');
-            $('#btnQualificationEdit').css('display', 'none');
-            $('#txtQualification').css('display', 'block');
-            $('#txtQualification').val($('#qualif').text());
-            $('#qualif').css('display', 'none');
+        $('#btnModeEdit').click(function () {
+            $('#btnModeSubmit').css('display', 'block');
+            $('#btnModeEdit').css('display', 'none');
+            $('#ddlMode').css('display', 'block');
+            $('#modef').css('display', 'none');
+            var modeValue = $('#modef').text();
+            if (modeValue =="On Campus"){
+                
+            }
+            // alert($('#modef').text());
+            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+            $('#modef').css('display', 'none');
         });
 
 
