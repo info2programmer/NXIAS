@@ -64,6 +64,7 @@ var app = {
                             localStorage.setItem('userInfo', response.d);
                             localStorage.login = "true";
                             localStorage.email=$('#txtUsername').val();
+                            // localStorage.name = response
                             window.location.href = "home.html";
                             // console.log(localStorage.email);
                         }

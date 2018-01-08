@@ -268,6 +268,25 @@ var app = {
         //         });
         //     }
         // });
+
+
+        // ***********************************************************************************************
+        // This Function For Image Upload
+        $('#file1').change(function () { 
+            // alert($('#file1').val()) 
+            var file=$('#file1').val();
+            var datas = { 'file_to_upload': file};
+            $.ajax({
+                type: "POST",
+                url: "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php",
+                data: datas,
+                dataType: "html",
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    console.log(response);
+                }
+            });           
+        });
         
     },
     // Update DOM on a Received Event
@@ -285,7 +304,7 @@ var app = {
 
 
 function updateProfile(updateValue,updateFld){
-    var urls ="http://spmgroupindia.com/NXIAS_APIS/update_profile.php"
+    var urls ="http://spmgroupindia.com/NXIAS_APIS/update_profile.php";
     datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email};
     $.ajax({
         type: "POST",
