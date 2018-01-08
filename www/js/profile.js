@@ -128,13 +128,61 @@ var app = {
             $('#ddlMode').css('display', 'block');
             $('#modef').css('display', 'none');
             var modeValue = $('#modef').text();
-            if (modeValue =="On Campus"){
-                
-            }
+            $("#ddlMode option[value='" + modeValue + "']").attr("selected", "selected");
             // alert($('#modef').text());
             // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
             $('#modef').css('display', 'none');
         });
+
+        // State Edit Button Click
+        $('#btnStateEdit').click(function () {
+            $('#btnStateSubmit').css('display', 'block');
+            $('#btnStateEdit').css('display', 'none');
+            $('#ddlState').css('display', 'block');
+            $('#statef').css('display', 'none');
+            var modeValue = $('#statef').text();
+            $("#ddlState option[value='" + modeValue + "']").attr("selected", "selected");
+            // alert($('#modef').text());
+            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+            $('#statef').css('display', 'none');
+        });
+
+        // City Edit Button Click
+        $('#btnCityEdit').click(function () {
+            $('#btnCitySave').css('display', 'block');
+            $('#btnCityEdit').css('display', 'none');
+            $('#ddlCity').css('display', 'block');
+            $('#cityf').css('display', 'none');
+            var modeValue = $('#cityf').text();
+            $("#ddlCity option[value='" + modeValue + "']").attr("selected", "selected");
+            // alert($('#modef').text());
+            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+            $('#cityf').css('display', 'none');
+        });
+
+        // Course Edit Button Click
+        $('#btnCourseEdit').click(function () {
+            $('#btnCourseSubmit').css('display', 'block');
+            $('#btnCourseEdit').css('display', 'none');
+            $('#ddlCouese').css('display', 'block');
+            $('#coursef').css('display', 'none');
+            var modeValue = $('#coursef').text();
+            $("#ddlCouese option[value='" + modeValue + "']").attr("selected", "selected");
+            // alert($('#modef').text());
+            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+            $('#coursef').css('display', 'none');
+        });
+
+
+        // *************************************************************************************
+        // This Section For Update Profile
+
+        // Update Name Here
+        $('#btnFnameSubmit').click(function () { 
+            // jqget
+        });
+
+
 
 
     },

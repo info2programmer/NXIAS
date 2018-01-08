@@ -158,11 +158,8 @@ input[type="password"] {
 					$('#btnReg').css('display','block');
                 }
                 else{
-					$('#chkuser').css('display','block');
-					$('#chkuser').css('color','red');
-					$('#chkuser').text('Already Exist');
 					$('#btnReg').css('display','none');
-					navigator.notification.beep(2);
+					navigator.notification.beep(1);
 					showAlert();
 					window.location.href = "login.html";
                 }
@@ -182,6 +179,15 @@ input[type="password"] {
 	function alertDismissed() {
         // do something
     }
+	 function showcnfpass() {
+        navigator.notification.alert(
+            'Password and Confirm Password Do Not Match.',  // message
+            alertDismissed,         // callback
+            'Mismatch!',            // title
+            'OK'                  // buttonName
+        );
+    }
+	
    </script>
 </body>
 
