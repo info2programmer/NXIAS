@@ -83,18 +83,20 @@ var app = {
                     },
                     success: function (response) {
                         $('#btnReg').prop('disabled', false);
-                        console.log(response);
                         if (response=="1"){
 							$('#msg').css('display','none');
                          window.location.href = "registration-next.html";   
                         }
 						if (response=="2"){
+							navigator.notification.beep(1);
 							showAlert();
 							window.location.href = "login.html";
                         }
 
 						else {
+							navigator.notification.beep(1);
 							showcnfpass();
+							window.location.href = "registration.html"; 
 							}
                     }
                 });

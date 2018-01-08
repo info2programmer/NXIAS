@@ -113,26 +113,26 @@ var app = {
 
 
         // Qualification Edit Button Click
-        $('#btnQualificationEdit').click(function () {
-            $('#btnQualificationSubmit').css('display', 'block');
-            $('#btnQualificationEdit').css('display', 'none');
-            $('#txtQualification').css('display', 'block');
-            $('#txtQualification').val($('#qualif').text());
-            $('#qualif').css('display', 'none');
-        });
+        // $('#btnQualificationEdit').click(function () {
+        //     $('#btnQualificationSubmit').css('display', 'block');
+        //     $('#btnQualificationEdit').css('display', 'none');
+        //     $('#txtQualification').css('display', 'block');
+        //     $('#txtQualification').val($('#qualif').text());
+        //     $('#qualif').css('display', 'none');
+        // });
 
         // Mode Edit Button Click
-        $('#btnModeEdit').click(function () {
-            $('#btnModeSubmit').css('display', 'block');
-            $('#btnModeEdit').css('display', 'none');
-            $('#ddlMode').css('display', 'block');
-            $('#modef').css('display', 'none');
-            var modeValue = $('#modef').text();
-            $("#ddlMode option[value='" + modeValue + "']").attr("selected", "selected");
-            // alert($('#modef').text());
-            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
-            $('#modef').css('display', 'none');
-        });
+        // $('#btnModeEdit').click(function () {
+        //     $('#btnModeSubmit').css('display', 'block');
+        //     $('#btnModeEdit').css('display', 'none');
+        //     $('#ddlMode').css('display', 'block');
+        //     $('#modef').css('display', 'none');
+        //     var modeValue = $('#modef').text();
+        //     $("#ddlMode option[value='" + modeValue + "']").attr("selected", "selected");
+        //     // alert($('#modef').text());
+        //     // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+        //     $('#modef').css('display', 'none');
+        // });
 
         // State Edit Button Click
         $('#btnStateEdit').click(function () {
@@ -161,17 +161,17 @@ var app = {
         });
 
         // Course Edit Button Click
-        $('#btnCourseEdit').click(function () {
-            $('#btnCourseSubmit').css('display', 'block');
-            $('#btnCourseEdit').css('display', 'none');
-            $('#ddlCouese').css('display', 'block');
-            $('#coursef').css('display', 'none');
-            var modeValue = $('#coursef').text();
-            $("#ddlCouese option[value='" + modeValue + "']").attr("selected", "selected");
-            // alert($('#modef').text());
-            // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
-            $('#coursef').css('display', 'none');
-        });
+        // $('#btnCourseEdit').click(function () {
+        //     $('#btnCourseSubmit').css('display', 'block');
+        //     $('#btnCourseEdit').css('display', 'none');
+        //     $('#ddlCouese').css('display', 'block');
+        //     $('#coursef').css('display', 'none');
+        //     var modeValue = $('#coursef').text();
+        //     $("#ddlCouese option[value='" + modeValue + "']").attr("selected", "selected");
+        //     // alert($('#modef').text());
+        //     // $('.ddlMode[value=' + $('#modef').text()+']').attr('selected', 'selected');
+        //     $('#coursef').css('display', 'none');
+        // });
 
 
         // *************************************************************************************
@@ -179,12 +179,96 @@ var app = {
 
         // Update Name Here
         $('#btnFnameSubmit').click(function () { 
-            // jqget
+            var name = $('#txtFname').val();
+            var updateFld = 'name';
+            if(name==""){
+                $('#txtFname').css('border-color', 'red');
+            }
+            else{
+                updateProfile(name, updateFld);
+            }
         });
 
 
+        // Update Phone Here
+        $('#btnPhoneSubmit').click(function () {
+            var phone = $('#txtPhone').val();
+            var updateFld = 'mobile_num';
+            if (phone == "") {
+                $('#txtPhone').css('border-color', 'red');
+            }
+            else {
+               updateProfile(name, updateFld);
+            }
+        });
 
+        // Update Qualification Here
+        $('#btnQualificationSubmit').click(function () {
+            var qualification = $('#txtQualification').val();
+            var updateFld = 'qualification';
+            if (qualification == "") {
+                $('#txtQualification').css('border-color', 'red');
+            }
+            else {
+                updateProfile(name, updateFld);
+            }
+        });
 
+        // Update Mode Here
+        // $('#btnModeSubmit').click(function () {
+        //     var mode = $('#ddlMode').val();
+        //     var updateFld = 'mode';
+        //     if (mode == "") {
+        //         $('#ddlMode').css('border-color', 'red');
+        //     }
+        //     else {
+        //         updateProfile(name, updateFld);
+        //     }
+        // });
+
+        // Update State Here
+        $('#btnStateSubmit').click(function () {
+            var state = $('#ddlState').val();
+            var updateFld ='state';
+            if (state == "") {
+                $('#ddlState').css('border-color', 'red');
+            }
+            else {
+                updateProfile(name, updateFld);
+            }
+        });
+
+        // Update City Here
+        $('#btnCitySave').click(function () {
+            var city = $('#ddlCity').val();
+            var updateFld = 'city';
+            if (city == "") {
+                $('#ddlCity').css('border-color', 'red');
+            }
+            else {
+                updateProfile(name, updateFld);
+            }
+        });
+
+        // // Update Course Here
+        // $('#btnCourseSubmit').click(function () {
+        //     var course = $('#ddlCouese').val();
+        //     if (course == "") {
+        //         $('#ddlCouese').css('border-color', 'red');
+        //     }
+        //     else {
+        //         $.ajax({
+        //             type: "method",
+        //             url: "url",
+        //             data: "data",
+        //             dataType: "dataType",
+        //             success: function (response) {
+
+        //             }
+        //         });
+        //     }
+        // });
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -198,3 +282,16 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+function updateProfile(updateValue,updateFld){
+    $.ajax({
+        type: "POST",
+        url: "url",
+        data: "data",
+        dataType: "dataType",
+        success: function (response) {
+            
+        }
+    });
+}
