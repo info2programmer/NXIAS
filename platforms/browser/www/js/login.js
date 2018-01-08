@@ -64,6 +64,8 @@ var app = {
                         if (resp[0]!=0){
                             localStorage.setItem('name', resp[1]);
                             localStorage.setItem('uname', resp[0]);
+                            expires.setFullYear(expires.getFullYear() + 10);
+                            document.cookie = escape(uname) + "=" + escape(name) + "; expires =" + expires.toGMTString();
                             // expires.setFullYear(expires.getFullYear() + 10); 
 
                             localStorage.login = "true";
