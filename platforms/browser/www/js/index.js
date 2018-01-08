@@ -53,17 +53,19 @@ var app = {
                 // console.log(response);
 				var resp = response.split('-');
                 if (resp[0]==0){
-					 window.setTimeout(function(){
-					 window.location.href = "beforelogin.html";
-					 }, 4000);
+					console.log(localStorage.email);
+					console.log(localStorage.name);
+				//	 window.setTimeout(function(){
+//					 window.location.href = "beforelogin.html";
+//					 }, 4000);
                 }
                 else{
 					localStorage.email = resp[1];
 					localStorage.name = resp[2];
 					
-					 window.setTimeout(function(){
-					 window.location.href = "home.html";
-					 }, 4000);
+					//  window.setTimeout(function(){
+					//  window.location.href = "home.html";
+					//  }, 4000);
                 }
                 
             }

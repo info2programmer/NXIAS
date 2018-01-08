@@ -51,7 +51,7 @@ var app = {
                     if (response == 1) {
                         localStorage.email="";
                         localStorage.login="false";
-                        window.location.href = "beforelogin.html";
+                        // window.location.href = "beforelogin.html";
                     }
                 }
             });
