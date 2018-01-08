@@ -237,11 +237,10 @@
                             <div class="form-group" style="font-size:45px;">
                                 <span id="namef">Loading....</span>
                                 <span class="pull-right">
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-edit" id="btnFnameEdit"></i>
+                                    <i class="fa fa-check-circle" id="btnFnameSubmit" style="color:#009900; display:none"></i>
                                 </span>
-                                <input type="text" class="form-control " name="name" placeholder="Name" required="" autofocus="" style="font-size:36px; display:none;"
-                                />
+                                <input type="text" class="form-control " name="name" placeholder="Name" required="" autofocus="" id="txtFname" style="font-size:36px; display:none;" />
                             </div>
                             <div class="form-group" style="font-size:45px;">
                                 <span id="mailf">Loading....</span>
@@ -249,41 +248,39 @@
                             <div class="form-group" style="font-size:45px;">
                                 <span id="nof">Loading....</span>
                                 <span class="pull-right">
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-edit" id="btnPhoneEdit"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none" id="btnPhoneSubmit"></i>
                                 </span>
-                                <input type="number" class="form-control" name="mob" placeholder="Mobile Number" required="" style="font-size:36px; display:none;"
-                                />
+                                <input type="number" class="form-control" name="mob" placeholder="Mobile Number" required="" style="font-size:36px; display:none;" id="txtPhone"/>
                             </div>
                             <div class="form-group" style="font-size:45px;">
                                 <span id="qualif">Loading....</span>
                                 <span class="pull-right">
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-edit" id="btnQualificationEdit"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none" id="btnQualificationSubmit"></i>
                                 </span>
-                                <input type="text" class="form-control" name="qualificatio" placeholder="Qualification" required="" style="font-size:36px; display:none;"
-                                />
+                                <input type="text" class="form-control" name="qualificatio" placeholder="Qualification" required="" style="font-size:36px; display:none;" id="txtQualification"/>
                             </div>
 
 
                             <div class="form-group" style="font-size:45px;">
                                 <span id="modef">Loading....</span>
                                 <span class="pull-right">
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-edit" id="btnModeEdit"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none" id="btnModeSubmit"></i>
                                 </span>
-                                <!-- <select class="form-control" style="font-size:45px; display:none;" >
-              	<option>Select Mode</option>
-                <option>On Campus</option>
-                <option>Online</option>
-              </select> -->
+                                <select class="form-control" id="ddlMode" style="font-size:45px; display:none;" >
+                                    <option hidden selected>Select Mode</option>
+                                    <option value="On Campus">On Campus</option>
+                                    <option value="Online">Online</option>
+                                </select>
                             </div>
 
                             <div class="form-group" style="font-size:45px;">
                                 <span id="statef">Loading....</span>
                                 <span class="pull-right">
                                     <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none"></i>
                                 </span>
                                 <select class="form-control" style="font-size:45px; display:none;">
                                     <option>Select State</option>
@@ -296,22 +293,22 @@
                                 <span id="cityf">Loading...</span>
                                 <span class="pull-right">
                                     <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none"></i>
                                 </span>
-                                <!-- <select class="form-control" style="font-size:45px; display:none;" >
-              	<option>Select City</option>
-                <option>Lucknow</option>
-                <option>Kolkata</option>
-              </select> -->
+                                <select class="form-control" style="font-size:45px; display:none;" >
+                                    <option>Select City</option>
+                                    <option>Lucknow</option>
+                                    <option>Kolkata</option>
+                                </select>
                             </div>
 
                             <div class="form-group" style="font-size:45px;">
                                 <span id="coursef">Loading...</span>
                                 <span class="pull-right">
                                     <i class="fa fa-edit"></i>
-                                    <i class="fa fa-check-circle" style="color:#009900;"></i>
+                                    <i class="fa fa-check-circle" style="color:#009900; display:none"></i>
                                 </span>
-                                <select class="form-control" style="font-size:45px; display:none;">
+                                <select class="form-control" style="font-size:45px; display:none; ">
                                     <option>Select Course</option>
                                     <option>Course 1</option>
                                     <option>Course 2</option>

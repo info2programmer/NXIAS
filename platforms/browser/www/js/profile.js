@@ -80,6 +80,57 @@ var app = {
                 $('#coursef').text(dataReq[7]);
             }
         });
+
+        // *************************************************************************************
+        // This Section For Edit Button click
+        
+        // Name Edit Button click
+        $('#btnFnameEdit').click(function () { 
+            $('#btnFnameSubmit').css('display', 'block');            
+            $('#btnFnameEdit').css('display', 'none');            
+            $('#txtFname').css('display', 'block');  
+            $('#txtFname').val($('#namef').text());  
+            $('#namef').css('display', 'none');          
+        });
+
+        // Phone Edit Button Click
+        $('#btnPhoneEdit').click(function () {
+            $('#btnPhoneSubmit').css('display', 'block');
+            $('#btnPhoneEdit').css('display', 'none');
+            $('#txtPhone').css('display', 'block');
+            $('#txtPhone').val($('#nof').text());
+            $('#nof').css('display', 'none');
+        });
+
+        // Qualification Edit Button Click
+        $('#btnQualificationEdit').click(function () {
+            $('#btnQualificationSubmit').css('display', 'block');
+            $('#btnQualificationEdit').css('display', 'none');
+            $('#txtQualification').css('display', 'block');
+            $('#txtQualification').val($('#qualif').text());
+            $('#qualif').css('display', 'none');
+        });
+
+
+        // Qualification Edit Button Click
+        $('#btnQualificationEdit').click(function () {
+            $('#btnQualificationSubmit').css('display', 'block');
+            $('#btnQualificationEdit').css('display', 'none');
+            $('#txtQualification').css('display', 'block');
+            $('#txtQualification').val($('#qualif').text());
+            $('#qualif').css('display', 'none');
+        });
+
+        // Mode Edit Button Click
+        $('#btnQualificationEdit').click(function () {
+            $('#btnQualificationSubmit').css('display', 'block');
+            $('#btnQualificationEdit').css('display', 'none');
+            $('#txtQualification').css('display', 'block');
+            $('#txtQualification').val($('#qualif').text());
+            $('#qualif').css('display', 'none');
+        });
+
+
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {

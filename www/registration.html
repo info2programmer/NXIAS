@@ -161,14 +161,25 @@ input[type="password"] {
 					$('#chkuser').css('color','red');
 					$('#chkuser').text('Already Exist');
 					$('#btnReg').css('display','none');
-					window.setTimeout(function(){
+					showAlert();
 					window.location.href = "login.html";
-					}, 3000);
                 }
                 
             }
         });
    }
+   
+    function showAlert() {
+        navigator.notification.alert(
+            'Email Already Exist.Please Login.',  // message
+            alertDismissed,         // callback
+            'Already Registered !',            // title
+            'OK'                  // buttonName
+        );
+    }
+	function alertDismissed() {
+        // do something
+    }
    </script>
 </body>
 

@@ -88,6 +88,16 @@ var app = {
 							$('#msg').css('display','none');
                          window.location.href = "registration-next.html";   
                         }
+						if (response=="2"){
+							$('#msg').css('display','block');
+							$('#msg').css('color','red');
+							$('#msg').text('Already Registered. Please Login.');
+							showAlert();
+							window.location.href = "login.html";
+							
+                        
+                        }
+
 						else {
 							$('#msg').css('display','block');
 							$('#msg').css('color','red');
