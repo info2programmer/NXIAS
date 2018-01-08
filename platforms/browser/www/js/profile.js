@@ -39,8 +39,8 @@ var app = {
         // This Code For Logout
         $('#btnLogout').click(function () {
             // alert();
-            // var userdata = localStorage.getItem('userInfo');
-            var userdata = localStorage.email;
+            var userdata = localStorage.getItem('uname');
+            // var userdata = localStorage.email;
             // console.log(userdata);
             var datas = { 'email': userdata };
             $.ajax({
@@ -51,7 +51,10 @@ var app = {
                     if (response == 1) {
                         localStorage.email="";
                         localStorage.login="false";
-                        // window.location.href = "beforelogin.html";
+                        localStorage.setItem('name', '');
+                        localStorage.setItem('uname', '');
+                        expires.setFullYear(expires.getFullYear() + 1);
+                        window.location.href = "beforelogin.html";
                     }
                 }
             });
@@ -60,7 +63,7 @@ var app = {
 
         // This Function Get All Data Form Server
         var urls = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
-        var userdata = localStorage.email;
+        var userdata = localStorage.getItem('uname');
         // console.log(userdata);
         var datas = { 'email': userdata };
         $.ajax({

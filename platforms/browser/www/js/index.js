@@ -41,7 +41,7 @@ var app = {
         //                            'Device Platform: ' + device.platform + '<br />' + 
         //                            'Device UUID: '     + device.uuid     + '<br />' + 
         //                            'Device Version: '  + device.version  + '<br />';
-        var datas = { 'div_id': device.uuid, 'dev_name': device.name };
+        var datas = { 'div_id': device.uuid, 'uname': localStorage.getItem('uname'), };
         //console.log(datas);
         $.ajax({
             type: "post",
@@ -53,19 +53,23 @@ var app = {
                 // console.log(response);
 				var resp = response.split('-');
                 if (resp[0]==0){
-					console.log(localStorage.email);
-					console.log(localStorage.name);
-				//	 window.setTimeout(function(){
-//					 window.location.href = "beforelogin.html";
-//					 }, 4000);
+					// console.log(localStorage.email);
+					// console.log(localStorage.name);
+					 window.setTimeout(function(){
+					 window.location.href = "beforelogin.html";
+					 }, 4000);
                 }
                 else{
+                    localStorage.setItem('name', resp[2]);
+                    localStorage.setItem('uname', resp[1]);
+                    expires.setFullYear(expires.getFullYear() + 1);
+
 					localStorage.email = resp[1];
-					localStorage.name = resp[2];
-					
-					//  window.setTimeout(function(){
-					//  window.location.href = "home.html";
-					//  }, 4000);
+                    localStorage.name = resp[2];
+                    
+					 window.setTimeout(function(){
+					 window.location.href = "home.html";
+					 }, 4000);
                 }
                 
             }

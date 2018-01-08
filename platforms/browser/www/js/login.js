@@ -62,6 +62,10 @@ var app = {
                     success: function (response) {
 						var resp = response.split('-');
                         if (resp[0]!=0){
+                            localStorage.setItem('name', resp[1]);
+                            localStorage.setItem('uname', resp[0]);
+                            expires.setFullYear(expires.getFullYear() + 1);
+
                             localStorage.login = "true";
                             localStorage.email=resp[0];
 							localStorage.name=resp[1];

@@ -81,6 +81,10 @@ var app = {
                         var resp = response.split("-");
                         if (resp[0]=="1"){
                             $('#msg').css('display','none');
+                            localStorage.setItem('name', resp[2]);
+                            localStorage.setItem('uname', resp[1]);
+                            expires.setFullYear(expires.getFullYear() + 1);
+
                             localStorage.login = "true";
                             localStorage.email = resp[1];
 							localStorage.name = resp[2];
