@@ -41,39 +41,47 @@ var app = {
         //                            'Device Platform: ' + device.platform + '<br />' + 
         //                            'Device UUID: '     + device.uuid     + '<br />' + 
         //                            'Device Version: '  + device.version  + '<br />';
-        var datas = { 'div_id': device.uuid, 'uname': localStorage.getItem('uname'), };
-        //console.log(datas);
-        $.ajax({
-            type: "post",
-            url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
-            data: datas,
-            dataType: "html",
-            success: function (response) {
-                // alert(response);
-                // console.log(response);
-				var resp = response.split('-');
-                if (resp[0]==0){
-					// console.log(localStorage.email);
-					// console.log(localStorage.name);
-					 window.setTimeout(function(){
-					 window.location.href = "beforelogin.html";
-					 }, 4000);
-                }
-                else{
-                    localStorage.setItem('name', resp[2]);
-                    localStorage.setItem('uname', resp[1]);
-                    expires.setFullYear(expires.getFullYear() + 1);
+       
+        // Check Login Status Is Localstroage
 
-					localStorage.email = resp[1];
-                    localStorage.name = resp[2];
-                    
-					 window.setTimeout(function(){
-					 window.location.href = "home.html";
-					 }, 4000);
+        if (localStorage.login == "false"){
+            // First Check Is Loged In In Database
+            window.setTimeout(function () {
+                window.location.href = "beforelogin.html";
+            }, 4000);
+        }
+        else{
+            var datas = { 'user_email': localStorage.getItem('uname')};
+            var urls ="http://spmgroupindia.com/NXIAS_APIS/reg.php";
+            $.ajax({
+                type: "post",
+                url: urls,
+                data: datas,
+                dataType: "html",
+                success: function (response) {
+                    var resp = response.split('-');
+                    if (resp[0] == 0) {
+                       
+                        window.setTimeout(function () {
+                            window.location.href = "beforelogin.html";
+                        }, 4000);
+                    }
+                    else {
+                        localStorage.setItem('name', resp[2]);
+                        localStorage.setItem('uname', resp[1]);
+
+                        localStorage.email = resp[1];
+                        localStorage.name = resp[2];
+                        localStorage.login="true";
+
+                        window.setTimeout(function () {
+                            window.location.href = "home.html";
+                        }, 4000);
+                    }
                 }
-                
-            }
-        });
+            });
+        }
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

@@ -39,6 +39,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "com.cordova.plugins.cookiemaster": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {

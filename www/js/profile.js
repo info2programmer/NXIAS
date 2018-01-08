@@ -49,11 +49,7 @@ var app = {
                 data: datas,
                 success: function (response) {
                     if (response == 1) {
-                        localStorage.email="";
                         localStorage.login="false";
-                        localStorage.setItem('name', '');
-                        localStorage.setItem('uname', '');
-                        expires.setFullYear(expires.getFullYear() + 1);
                         window.location.href = "beforelogin.html";
                     }
                 }
