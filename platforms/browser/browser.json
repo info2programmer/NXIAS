@@ -63,6 +63,9 @@
     },
     "com.cordova.plugins.cookiemaster": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-progress": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {},
@@ -479,6 +482,14 @@
       "clobbers": [
         "cookieMaster"
       ]
+    },
+    {
+      "file": "plugins/cordova-plugin-progress/www/progress.js",
+      "id": "cordova-plugin-progress.Progress",
+      "pluginId": "cordova-plugin-progress",
+      "clobbers": [
+        "progress"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -495,6 +506,7 @@
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.1.0",
-    "com.cordova.plugins.cookiemaster": "1.0.0"
+    "com.cordova.plugins.cookiemaster": "1.0.0",
+    "cordova-plugin-progress": "0.3.0"
   }
 }

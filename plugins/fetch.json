@@ -110,5 +110,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-progress": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-progress"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

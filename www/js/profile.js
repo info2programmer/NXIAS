@@ -271,21 +271,6 @@ var app = {
 
         // ***********************************************************************************************
         // This Function For Image Upload
-        $('#file1').change(function () { 
-            // alert($('#file1').val()) 
-            var file=$('#file1').val();
-            var datas = { 'file_to_upload': file};
-            $.ajax({
-                type: "POST",
-                url: "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php",
-                data: datas,
-                dataType: "html",
-                enctype: 'multipart/form-data',
-                success: function (response) {
-                    console.log(response);
-                }
-            });           
-        });
         
     },
     // Update DOM on a Received Event
@@ -298,7 +283,8 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    
 };
 
 
@@ -322,4 +308,41 @@ function updateProfile(updateValue,updateFld){
             }
         }
     });
+}
+
+function capture() {
+    navigator.camera.getPicture(onSuccess, onFail, {
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+    });
+}
+
+function uploadImage(imageData) {
+    var serverURL = "localhost:3000/uploads/upload.php";
+    var options = new FileUploadOptions();
+    options.fileKey = 'file';
+    options.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
+    options.mimeType = "image/jpeg";
+
+    var ft = new FileTransfer();
+    ft.upload(imageData, serverURL, onUploadSuccess, onUploadError, options);
+}
+
+function onUploadSuccess() {
+    alert('Photo Uploaded Successfully');
+}
+
+function onUploadError() {
+    alert('Error uploading photo');
+}
+
+function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = imageData;
+    uploadImage(imageData);
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
 }
