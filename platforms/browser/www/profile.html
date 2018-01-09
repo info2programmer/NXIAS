@@ -219,6 +219,7 @@
                 options.chunkedMode = false;
                 
                 var sendData={'img_data': imageURI,'email':localStorage.email };
+                alert(sendData);
                 var ft = new FileTransfer();
                 ft.upload(sendData, "https://bebongstore.com/nxias/manage_api/image_upload", function (result) {
                     alert('successfully uploaded ' + result.response);
