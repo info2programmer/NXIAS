@@ -44,7 +44,7 @@ var app = {
                     $.each(response.videos, function (val, text) {
                         var videotitle = text.title;
 						var video = text.video_link;
-						$('#allvideo').append('<div style="font-size:30px;"><span style="color:#000000; font-weight:bold; text-transform:uppercase;" id="title"> Title : '+videotitle+'</span><div class="embed-responsive embed-responsive-16by9" id="vtag"><iframe class="embed-responsive-item" src="//www.youtube.com/embed/'+video+'"></iframe></div></div><hr class="style13">');
+						$('#allvideo').append('<div style="font-size:30px;"><span style="color:#000000; font-weight:bold; text-transform:uppercase;" id="title"> Title : '+videotitle+'</span><div class="embed-responsive embed-responsive-16by9" id="vtag"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/'+video+'"></iframe></div></div><hr class="style13">');
                     });
                 }
             }
