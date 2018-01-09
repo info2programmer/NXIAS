@@ -271,21 +271,6 @@ var app = {
 
         // ***********************************************************************************************
         // This Function For Image Upload
-        $('#file1').change(function () { 
-            // alert($('#file1').val()) 
-            var file=$('#file1').val();
-            var datas = { 'file_to_upload': file};
-            $.ajax({
-                type: "POST",
-                url: "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php",
-                data: datas,
-                dataType: "html",
-                enctype: 'multipart/form-data',
-                success: function (response) {
-                    console.log(response);
-                }
-            });           
-        });
         
     },
     // Update DOM on a Received Event
@@ -298,7 +283,8 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    }
+    },
+    
 };
 
 
@@ -323,3 +309,68 @@ function updateProfile(updateValue,updateFld){
         }
     });
 }
+
+function capture() {
+    navigator.camera.getPicture(onSuccess, onFail, {
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+    });
+}
+
+function uploadImage() {
+    // Get URI of picture to upload
+    navigator.camera.getPicture(
+        function (uri) {
+            try {
+                // Pick image from div
+                var img = document.getElementById('pimage');
+                img.style.visibility = "visible";
+                img.style.display = "block";
+                var imageURI = uri;
+                if (!imageURI || (img.style.display == "none")) {
+                    alert("Tap on picture to select image from gallery.");
+                    return;
+                }
+                // Verify server has been entered
+                server = "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php";
+                console.log("Server " + server);
+                if (server) {
+                    // Specify transfer options
+                    var options = new FileUploadOptions();
+                    options.fileKey = "file";
+                    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+                    options.mimeType = "image/jpeg";
+                    options.chunkedMode = false;
+
+                    // Transfer picture to server
+                    var ft = new FileTransfer();
+                    ft.upload(imageURI, server, function (r) {
+                        alert("Upload successful: " + r.bytesSent + " bytes uploaded.");
+                        img.src = uri;
+                        img.width = 100;
+                        img.height = 100;
+                    },
+                        function (error) {
+                            alert("Upload failed: Code = " + error.code);
+                        }, options);
+                }
+                else {
+                    alert("Server Not Found");
+                }
+            }
+            catch (exce) {
+                alert(exce);
+            }
+        },
+        function (e) {
+            console.log("Error getting picture: " + e);
+            alert("No Image Found");
+        },
+        {
+            quality: 50,
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        }
+    );
+}  

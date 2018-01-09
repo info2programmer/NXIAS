@@ -412,6 +412,30 @@ module.exports = [
         "clobbers": [
             "cookieMaster"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-progress/www/progress.js",
+        "id": "cordova-plugin-progress.Progress",
+        "pluginId": "cordova-plugin-progress",
+        "clobbers": [
+            "progress"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-spinner/www/spinner-plugin.js",
+        "id": "cordova-plugin-spinner.SpinnerPlugin",
+        "pluginId": "cordova-plugin-spinner",
+        "clobbers": [
+            "SpinnerPlugin"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-native-transitions/www/nativetransitions.js",
+        "id": "cordova-plugin-native-transitions.NativeTransitions",
+        "pluginId": "cordova-plugin-native-transitions",
+        "clobbers": [
+            "nativetransitions"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -430,7 +454,11 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.1.0",
-    "com.cordova.plugins.cookiemaster": "1.0.0"
+    "com.cordova.plugins.cookiemaster": "1.0.0",
+    "cordova-plugin-progress": "0.3.0",
+    "cordova-plugin-spinner": "1.1.0",
+    "cordova-plugin-console": "1.1.0",
+    "cordova-plugin-native-transitions": "0.2.3"
 }
 // BOTTOM OF METADATA
 });
