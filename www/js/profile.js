@@ -318,32 +318,59 @@ function capture() {
     });
 }
 
-function uploadImage(imageData) {
-    // var serverURL = "localhost:3000/uploads/upload.php";
-    var image = document.getElementById('myImage');
-    image.src = imageData;
-    var blob = image[0].getAsFile();
-    window.URL = window.URL || window.webkitURL;
-    var blobUrl = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
+function uploadImage() {
+    // Get URI of picture to upload
+    navigator.camera.getPicture(
+        function (uri) {
+            try {
+                // Pick image from div
+                var img = document.getElementById('pimage');
+                img.style.visibility = "visible";
+                img.style.display = "block";
+                var imageURI = uri;
+                if (!imageURI || (img.style.display == "none")) {
+                    alert("Tap on picture to select image from gallery.");
+                    return;
+                }
+                // Verify server has been entered
+                server = "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php";
+                console.log("Server " + server);
+                if (server) {
+                    // Specify transfer options
+                    var options = new FileUploadOptions();
+                    options.fileKey = "file";
+                    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+                    options.mimeType = "image/jpeg";
+                    options.chunkedMode = false;
 
-    var file = blob;
-    upload(file);
-}
-
-function onUploadSuccess() {
-    alert('Photo Uploaded Successfully');
-}
-
-function onUploadError() {
-    alert('Error uploading photo');
-}
-
-function onSuccess(imageData) {
-    var image = document.getElementById('myImage');
-    image.src = imageData;
-    uploadImage(imageData);
-}
-
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
+                    // Transfer picture to server
+                    var ft = new FileTransfer();
+                    ft.upload(imageURI, server, function (r) {
+                        alert("Upload successful: " + r.bytesSent + " bytes uploaded.");
+                        img.src = uri;
+                        img.width = 100;
+                        img.height = 100;
+                    },
+                        function (error) {
+                            alert("Upload failed: Code = " + error.code);
+                        }, options);
+                }
+                else {
+                    alert("Server Not Found");
+                }
+            }
+            catch (exce) {
+                alert(exce);
+            }
+        },
+        function (e) {
+            console.log("Error getting picture: " + e);
+            alert("No Image Found");
+        },
+        {
+            quality: 50,
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        }
+    );
+}  

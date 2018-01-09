@@ -428,6 +428,14 @@ module.exports = [
         "clobbers": [
             "SpinnerPlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-native-transitions/www/nativetransitions.js",
+        "id": "cordova-plugin-native-transitions.NativeTransitions",
+        "pluginId": "cordova-plugin-native-transitions",
+        "clobbers": [
+            "nativetransitions"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -448,7 +456,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.1.0",
     "com.cordova.plugins.cookiemaster": "1.0.0",
     "cordova-plugin-progress": "0.3.0",
-    "cordova-plugin-spinner": "1.1.0"
+    "cordova-plugin-spinner": "1.1.0",
+    "cordova-plugin-console": "1.1.0",
+    "cordova-plugin-native-transitions": "0.2.3"
 }
 // BOTTOM OF METADATA
 });
