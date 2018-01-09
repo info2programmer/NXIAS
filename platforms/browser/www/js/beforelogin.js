@@ -34,7 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         // app.receivedEvent('deviceready');
-		navigator.notification.activityStart("Please Wait", "Its loading....."); 
+		SpinnerPlugin.activityStart("Please Wait", "Its loading.....");
+		
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

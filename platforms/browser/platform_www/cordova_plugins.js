@@ -420,6 +420,14 @@ module.exports = [
         "clobbers": [
             "progress"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-spinner/www/spinner-plugin.js",
+        "id": "cordova-plugin-spinner.SpinnerPlugin",
+        "pluginId": "cordova-plugin-spinner",
+        "clobbers": [
+            "SpinnerPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -439,7 +447,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.1.0",
     "com.cordova.plugins.cookiemaster": "1.0.0",
-    "cordova-plugin-progress": "0.3.0"
+    "cordova-plugin-progress": "0.3.0",
+    "cordova-plugin-spinner": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

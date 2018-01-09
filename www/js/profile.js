@@ -319,14 +319,15 @@ function capture() {
 }
 
 function uploadImage(imageData) {
-    var serverURL = "localhost:3000/uploads/upload.php";
-    var options = new FileUploadOptions();
-    options.fileKey = 'file';
-    options.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
+    // var serverURL = "localhost:3000/uploads/upload.php";
+    var image = document.getElementById('myImage');
+    image.src = imageData;
+    var blob = image[0].getAsFile();
+    window.URL = window.URL || window.webkitURL;
+    var blobUrl = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
 
-    var ft = new FileTransfer();
-    ft.upload(imageData, serverURL, onUploadSuccess, onUploadError, options);
+    var file = blob;
+    upload(file);
 }
 
 function onUploadSuccess() {
