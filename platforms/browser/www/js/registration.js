@@ -75,29 +75,31 @@ var app = {
             else{
                 $.ajax({
                     type: "post",
-                    url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
+                    url: "https://bebongstore.com/nxias/manage_api/registration1",
                     data: datas,
-					//datatype:'html'
+					datatype:'json',
                     beforeSend: function () {
                         $('#btnReg').prop('disabled', true);
                     },
                     success: function (response) {
+                        var da = $.parseJSON(response);
+                        // console.log(d.status);
                         $('#btnReg').prop('disabled', false);
-                        if (response=="1"){
+                        if (da.status==1){
 							$('#msg').css('display','none');
-                         window.location.href = "registration-next.html";   
+                             window.location.href = "registration-next.html";   
                         }
-						if (response=="2"){
+                        else if (da.status == 2){
 							navigator.notification.beep(1);
 							showAlert();
 							window.location.href = "login.html";
                         }
-
 						else {
+                            // console.log('Mismatch');
 							navigator.notification.beep(1);
 							showcnfpass();
 							window.location.href = "registration.html"; 
-							}
+						}
                     }
                 });
             }
@@ -115,3 +117,22 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+function showAlert() {
+    navigator.notification.alert(
+        'Email Already Exist.Please Login.',  // message
+        alertDismissed,         // callback
+        'Already Registered !',            // title
+        'OK'                  // buttonName
+    );
+}
+function alertDismissed() {
+    // do something
+}
+function showcnfpass() {
+    navigator.notification.alert(
+        'Password and Confirm Password Do Not Match.',  // message
+        alertDismissed,         // callback
+        'Mismatch!',            // title
+        'OK'                  // buttonName
+    );
+}

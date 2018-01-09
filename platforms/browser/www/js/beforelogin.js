@@ -36,7 +36,7 @@ var app = {
         // app.receivedEvent('deviceready');
 		//SpinnerPlugin.activityStart("Please Wait", "Its loading.....");
 		
-	
+	$('#overlay').fadeOut(5000);
 
 
     },

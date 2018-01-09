@@ -42,14 +42,16 @@ var app = {
             var userdata = localStorage.getItem('uname');
             // var userdata = localStorage.email;
             // console.log(userdata);
-            var datas = { 'email': userdata };
+            var datas = {'email': userdata };
             $.ajax({
                 type: "post",
-                url: "http://spmgroupindia.com/NXIAS_APIS/logout.php",
+                url: "https://bebongstore.com/nxias/manage_api/logout",
                 data: datas,
                 success: function (response) {
-                    if (response == 1) {
-                        localStorage.login="false";
+                    da = $.parseJSON(response);
+                    if (da.status==1){
+                        localStorage.email = "";
+                        localStorage.login = "false";
                         window.location.href = "beforelogin.html";
                     }
                 }
@@ -57,8 +59,8 @@ var app = {
 
         });
 
-        // This Function Get All Data Form Server
-        var urls = "http://spmgroupindia.com/NXIAS_APIS/getuserdata.php";
+        // This Function Get All Data From Server
+        var urls = "https://bebongstore.com/nxias/manage_api/profile_view";
         var userdata = localStorage.getItem('uname');
         // console.log(userdata);
         var datas = { 'email': userdata };
@@ -66,17 +68,37 @@ var app = {
             type: "post",
             url: urls,
             data: datas,
-            dataType: "html",
+            dataType: "json",
             success: function (response) {
-                var dataReq=response.split("-");
-                $('#namef').text(dataReq[0]);
-                $('#mailf').text(dataReq[1]);
-                $('#nof').text(dataReq[2]);
-                $('#qualif').text(dataReq[3]);
-                $('#modef').text(dataReq[4]);
-                $('#statef').text(dataReq[5]);
-                $('#cityf').text(dataReq[6]);
-                $('#coursef').text(dataReq[7]);
+                $('#namef').text(response.stu_arr.name);
+                $('#mailf').text(response.stu_arr.email);
+                $('#nof').text(response.stu_arr.mobile_num);
+                $('#qualif').text(response.stu_arr.qualification);
+                $('#modef').text(response.stu_arr.mode);
+                $('#statef').text(response.stu_arr.state);
+                $('#cityf').text(response.stu_arr.city);
+                $('#coursef').text(response.stu_arr.course);
+            }
+        });
+		
+		
+		// This Function Get Image From Server
+        var urls = "https://bebongstore.com/nxias/manage_api/image_view";
+        var userdata = localStorage.getItem('uname');
+        // console.log(userdata);
+        var datas = { 'email': userdata };
+        $.ajax({
+            type: "post",
+            url: urls,
+            data: datas,
+            dataType: "json",
+            success: function (response) {
+				pfURL = "http://bebongstore.com/nxias/uploads/student/";
+				if(response.status) {
+					$("#pimage").attr("src",pfURL+response.prof_image);
+				} else {
+					$("#pimage").attr("src",pfURL+response.prof_image);
+				}
             }
         });
 
@@ -111,14 +133,7 @@ var app = {
         });
 
 
-        // Qualification Edit Button Click
-        // $('#btnQualificationEdit').click(function () {
-        //     $('#btnQualificationSubmit').css('display', 'block');
-        //     $('#btnQualificationEdit').css('display', 'none');
-        //     $('#txtQualification').css('display', 'block');
-        //     $('#txtQualification').val($('#qualif').text());
-        //     $('#qualif').css('display', 'none');
-        // });
+        
 
         // Mode Edit Button Click
         // $('#btnModeEdit').click(function () {
@@ -180,11 +195,12 @@ var app = {
         $('#btnFnameSubmit').click(function () { 
             var name = $('#txtFname').val();
             var updateFld = 'name';
+			var labelName = 'namef';
             if(name==""){
                 $('#txtFname').css('border-color', 'red');
             }
             else{
-                updateProfile(name, updateFld);
+                updateProfile(name, updateFld, labelName);
             }
         });
 
@@ -193,11 +209,12 @@ var app = {
         $('#btnPhoneSubmit').click(function () {
             var phone = $('#txtPhone').val();
             var updateFld = 'mobile_num';
+			var labelName = 'nof';
             if (phone == "") {
                 $('#txtPhone').css('border-color', 'red');
             }
             else {
-                updateProfile(phone, updateFld);
+                updateProfile(phone, updateFld, labelName);
             }
         });
 
@@ -205,11 +222,12 @@ var app = {
         $('#btnQualificationSubmit').click(function () {
             var qualification = $('#txtQualification').val();
             var updateFld = 'qualification';
+			var labelName = 'qualif';
             if (qualification == "") {
                 $('#txtQualification').css('border-color', 'red');
             }
             else {
-                updateProfile(qualification, updateFld);
+                updateProfile(qualification, updateFld, labelName);
             }
         });
 
@@ -217,11 +235,12 @@ var app = {
         // $('#btnModeSubmit').click(function () {
         //     var mode = $('#ddlMode').val();
         //     var updateFld = 'mode';
+		//		var labelName = 'namef';
         //     if (mode == "") {
         //         $('#ddlMode').css('border-color', 'red');
         //     }
         //     else {
-        //         updateProfile(name, updateFld);
+        //         updateProfile(name, updateFld, labelName);
         //     }
         // });
 
@@ -229,11 +248,12 @@ var app = {
         $('#btnStateSubmit').click(function () {
             var state = $('#ddlState').val();
             var updateFld ='state';
+			var labelName = 'statef';
             if (state == "") {
                 $('#ddlState').css('border-color', 'red');
             }
             else {
-                updateProfile(state, updateFld);
+                updateProfile(state, updateFld, labelName);
             }
         });
 
@@ -241,11 +261,12 @@ var app = {
         $('#btnCitySave').click(function () {
             var city = $('#ddlCity').val();
             var updateFld = 'city';
+			var labelName = 'cityf';
             if (city == "") {
                 $('#ddlCity').css('border-color', 'red');
             }
             else {
-                updateProfile(city, updateFld);
+                updateProfile(city, updateFld, labelName);
             }
         });
 
@@ -288,23 +309,23 @@ var app = {
 };
 
 
-function updateProfile(updateValue,updateFld){
-    var urls ="http://spmgroupindia.com/NXIAS_APIS/update_profile.php";
-    datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email};
+function updateProfile(updateValue,updateFld,labelName){
+    var urls ="https://bebongstore.com/nxias/manage_api/profile_update";
+    datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email,'labelName':labelName};
     $.ajax({
         type: "POST",
         url: urls,
         data: datas,
-        dataType: 'html',
+        dataType: 'json',
         beforeSend: function () {
             // $('#btnLogin').prop('disabled', true);
             // Loading Status will be shown here
         },
         success: function (response) {
-            // console.log(response);
-            if (response=="1"){
-                alert(updateFld + ' Change To ' + updateValue+' Successfully');
-                window.location.href = "profile.html";
+            if (response.status==1){
+                //alert(updateFld + ' Change To ' + updateValue+' Successfully');
+                window.location.href = "profile.html";				
+				//$('#'+labelName).val(updateValue);
             }
         }
     });

@@ -436,6 +436,14 @@ module.exports = [
         "clobbers": [
             "nativetransitions"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-pdf-viewer/www/pdfviewer.js",
+        "id": "cordova-plugin-pdf-viewer.PDFViewer",
+        "pluginId": "cordova-plugin-pdf-viewer",
+        "clobbers": [
+            "PDFViewer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -458,7 +466,8 @@ module.exports.metadata =
     "cordova-plugin-progress": "0.3.0",
     "cordova-plugin-spinner": "1.1.0",
     "cordova-plugin-console": "1.1.0",
-    "cordova-plugin-native-transitions": "0.2.3"
+    "cordova-plugin-native-transitions": "0.2.3",
+    "cordova-plugin-pdf-viewer": "0.0.1"
 }
 // BOTTOM OF METADATA
 });

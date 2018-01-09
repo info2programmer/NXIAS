@@ -54,6 +54,9 @@
     },
     "cordova-plugin-native-transitions": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-pdf-viewer": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {

@@ -34,6 +34,68 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         // app.receivedEvent('deviceready');
+
+        // Page Onload State Generate 
+        $.ajax({
+            type: "post",
+            url: "https://bebongstore.com/nxias/manage_api/get_state",
+            dataType: "json",
+            success: function (response) {
+                // var da = $.parseJSON(response);
+                if (response.status == 1) {
+                    $.each(response.states, function (val, text) {
+                        var state = text.state;
+                        $('#state').append($('<option></option>').val(state).html(state));
+                    });
+                }
+            }
+        }); 
+
+        // Page Onload Course Generate 
+        
+        
+        // State Onchange Get City
+        $('#state').change(function () { 
+            $('#city').empty();
+            $('#course').empty();
+            var datas = { 'state': $('#state').val()};
+            $.ajax({
+                type: "post",
+                url: "https://bebongstore.com/nxias/manage_api/get_city",
+                data:datas,
+                dataType: "json",
+                success: function (response) {
+                    // var da = $.parseJSON(response);
+                    if (response.status == 1) {
+                        $.each(response.cities, function (val, text) {
+                            var city = text.city;
+                            $('#city').append($('<option></option>').val(city).html(city));
+                        });
+                    }
+                }
+            });    
+            
+            $.ajax({
+                type: "post",
+                url: "https://bebongstore.com/nxias/manage_api/get_course",
+                dataType: "json",
+                data:datas,
+                success: function (response) {
+                    // var da = $.parseJSON(response);
+                    if (response.status == 1) {
+                        $.each(response.courses, function (val, text) {
+                            var course_name = text.course_name;
+                            $('#course').append($('<option></option>').val(course_name).html(course_name));
+                        });
+                    }
+                    else{
+                        $('#course').append($('<option></option>').val('').html('No Course Available'));
+                    }
+                }
+            }); 
+        });
+
+
 		$('#logbtn').click(function () { 
             var location = getCurrentLocation();
             // console.log(location);
@@ -69,25 +131,25 @@ var app = {
             else{
                 $.ajax({
                     type: "post",
-                    url: "http://spmgroupindia.com/NXIAS_APIS/reg.php",
+                    url: "https://bebongstore.com/nxias/manage_api/registration2",
                     data: datas,
-					//datatype:'html'
+					datatype:'json',
                     beforeSend: function () {
                         $('#logbtn').prop('disabled', true);
                     },
                     success: function (response) {
                         $('#logbtn').prop('disabled', false);
-                        console.log(response);
+                        var da = $.parseJSON(response);
+                        //console.log(response);
                         var resp = response.split("-");
-                        if (resp[0]=="1"){
+                        if (da.status=="1"){
                             $('#msg').css('display','none');
-                            localStorage.setItem('name', resp[2]);
-                            localStorage.setItem('uname', resp[1]);
-                            expires.setFullYear(expires.getFullYear() + 1);
+                            localStorage.setItem('name', da.name);
+                            localStorage.setItem('uname', da.email);                            
 
                             localStorage.login = "true";
-                            localStorage.email = resp[1];
-							localStorage.name = resp[2];
+                            localStorage.email = da.email;
+                            localStorage.name = da.name;
                             window.location.href = "home.html";   
                         }
 						else {

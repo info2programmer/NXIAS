@@ -53,25 +53,23 @@ var app = {
                
                 $.ajax({
                     type: "post",
-                    url: "http://spmgroupindia.com/NXIAS_APIS/chklogin.php",
+                    url: "http://bebongstore.com/nxias/manage_api/login",
                     data: datas,
-                    // dataType: "dataType",
+                    dataType: 'json',
                     beforeSend: function () {
                         $('#btnLogin').prop('disabled', true);
                     },
                     success: function (response) {
-						var resp = response.split('-');
-                        if (resp[0]!=0){
+						
+                        if (response.status==1){
                             
-                            localStorage.setItem('name', resp[1]);
-                            localStorage.setItem('uname', resp[0]);
+                            localStorage.setItem('name', response.student_arr.name);
+                            localStorage.setItem('uname', response.student_arr.email);
                             
                             localStorage.login = "true";
-                            localStorage.email=resp[0];
-							localStorage.name=resp[1];
-                            // localStorage.name = response
+                            localStorage.email = response.student_arr.email;
+                            localStorage.name = response.student_arr.name;                            
                             window.location.href = "home.html";
-                            // console.log(localStorage.email);
                         }
                         else{
                             $('#txtUsername').css('border-color', 'red');

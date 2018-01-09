@@ -23,6 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="css/zstyle.css">
 <style>
 body {
     font-family: "Lato", sans-serif;
@@ -101,15 +102,6 @@ hr.style13 {
    padding:20px;
 }
 
-.topperone {
-   position: fixed;
-   left: 0;
-   top: 0;
-   width: 100%;
-   color: white;
-
-
-}
 
 /* for login form */
 .form-signin {
@@ -203,73 +195,32 @@ input[type="password"] {
                                 <div style="padding:10px; border:1px solid #006633; margin-bottom:30px;">
                                 <form action="" method="post" class="form-signin">       
 			  <div class="form-group">
-			  <select class="form-control" style="font-size:36px;" >
-              	<option value="">Select Subject</option>
-                <option value="">Indian History</option>
-                <option value="">Indian Polity</option>
-                <option value="">Current Events</option>
-                <option value="">General Mental Ability</option>
+			  <select class="form-control" style="font-size:36px;" id="subject">
               </select>
               </div>
               
               <div class="form-group">
-			  <select class="form-control" style="font-size:36px;" >
-              	<option value="">Select Section</option>
-                <option value="">Ancient Indian History</option>
-                <option value="">Mediavel Indian History</option>
-                <option value="">Modern Indian History</option>
-                <option value="">Indian Constitution</option>
-                <option value="">Panchayati Raj</option>
+			  <select class="form-control" style="font-size:36px;" id="section">
               </select>
               </div>
               
               <div class="form-group">
-			  <select class="form-control" style="font-size:36px;" >
-              	<option value="">Select Chapter</option>
-                <option value="">Mahenjodaro Civilization</option>
-                <option value="">Mughal Dynasty</option>
-                <option value="">Sultan Dynasty</option>
-                <option value="">Indian National Movement</option>
+			  <select class="form-control" style="font-size:36px;" id="chapter">
               </select>
               </div>
               
               <div class="form-group">
-			  <select class="form-control" style="font-size:36px;" >
-              	<option value="">Select Topic</option>
-                <option value="">Socio-Economic Life of Early Vedic Age</option>
-                <option value="">Central Administration of Akbar</option>
-                <option value="">India Election 2019</option>
+			  <select class="form-control" style="font-size:36px;" id="topic">
               </select>
               </div>
                 
 			 
-			  <button class="btn btn-lg btn-info btn-block" style="font-size:40px;"  name="Submit" value="Login" type="Submit">Search Study Materials</button>  			
+			  <button class="btn btn-lg btn-info btn-block" style="font-size:40px;" id="studsrch" name="Submit" value="Login" type="button">Search Study Materials</button>  			
 		</form>	
                                 </div>
                               
-                              <div style="overflow-y:scroll; padding-right:40px; height:1200px;">  
-                                
-                                <div style="font-size:30px;"> 
-                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> <i class="fa fa-file-pdf-o" style="color:#FF2424; font-size:40px;"></i> &nbsp;Socio-Economic Life of Early Vedic Age</span> <span class="pull-right"><button class="btn btn-warning" style="font-size:30px;">View</button></span>
-                                   
-                                    </div>
-                                <hr class="style13">
-                                <div style="font-size:30px;"> 
-                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> <i class="fa fa-file-pdf-o" style="color:#FF2424; font-size:40px;"></i> &nbsp;Central Administration of Akbar</span> <span class="pull-right"><button class="btn btn-warning" style="font-size:30px;">View</button></span>
-                                   
-                                    </div>
-                                <hr class="style13">
-                                <div style="font-size:30px;"> 
-                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> <i class="fa fa-file-pdf-o" style="color:#FF2424; font-size:40px;"></i> &nbsp;India Election 2019</span> <span class="pull-right"><button class="btn btn-warning" style="font-size:30px;">View</button></span>
-                                   
-                                    </div>
-                                <hr class="style13">
-                                <div style="font-size:30px;"> 
-                                   <span style="color:#000000; font-weight:bold; text-transform:uppercase;"> <i class="fa fa-file-pdf-o" style="color:#FF2424; font-size:40px;"></i> &nbsp;General Studies 4</span> <span class="pull-right"><button class="btn btn-warning" style="font-size:30px;">View</button></span>
-                                   
-                                    </div>
-                                <hr class="style13">
- 
+                              <div style="overflow-y:scroll; padding-right:40px; height:1200px;" id="allsrchlist">  
+                              
         						</div> <!-- scrollable div --->
         </div>
         
@@ -297,6 +248,7 @@ function closeNav() {
 }
 </script>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/studymaterial.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

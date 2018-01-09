@@ -75,6 +75,9 @@
     },
     "cordova-plugin-native-transitions": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-pdf-viewer": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {},
@@ -515,6 +518,14 @@
       "clobbers": [
         "nativetransitions"
       ]
+    },
+    {
+      "file": "plugins/cordova-plugin-pdf-viewer/www/pdfviewer.js",
+      "id": "cordova-plugin-pdf-viewer.PDFViewer",
+      "pluginId": "cordova-plugin-pdf-viewer",
+      "clobbers": [
+        "PDFViewer"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -535,6 +546,7 @@
     "cordova-plugin-progress": "0.3.0",
     "cordova-plugin-spinner": "1.1.0",
     "cordova-plugin-console": "1.1.0",
-    "cordova-plugin-native-transitions": "0.2.3"
+    "cordova-plugin-native-transitions": "0.2.3",
+    "cordova-plugin-pdf-viewer": "0.0.1"
   }
 }

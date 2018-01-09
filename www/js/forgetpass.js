@@ -42,24 +42,31 @@ var app = {
             }  
             else{
                 var user_name=$('#txtUsername').val();
-                var datas = { 'user_name': user_name};
+                var datas = { 'email': user_name};
                 $.ajax({
                     type: "post",
-                    url: "http://spmgroupindia.com/NXIAS_APIS/forgetpass.php",
+                    url: "https://bebongstore.com/nxias/manage_api/forgotpassword",
                     data: datas,
                     // dataType: "dataType",
                     beforeSend: function () {
                         $('#btnforget').prop('disabled', true);
                     },
                     success: function (response) {
-                        if (response==0){
-                            $('#msg').css('display','block');
-							$('#msg').css('color','red');
-							$('#txtUsername').val('');
-							$('#msg').text('Sorry! Please Try Again');
-							$('#btnforget').prop('disabled', false);
+                        da = $.parseJSON(response);
+                        if (da.status==0){
+                            // $('#msg').css('display','block');
+							// $('#msg').css('color','red');
+							// $('#txtUsername').val('');
+							// $('#msg').text('Sorry! Please Try Again');
+                            // $('#btnforget').prop('disabled', false);
+                            
+                            $('#msg').css('display', 'block');
+                            $('#msg').css('color', 'red');
+                            $('#txtUsername').val('');
+                            $('#msg').text('Sorry! Mail Id Not Registered With Us');
+                            $('#btnforget').prop('disabled', false);
                         }
-						else if (response==1){
+						else if (da.status==1){
 							$('#msg').css('display','block');
 							$('#msg').css('color','green');
 							$('#txtUsername').val('');
@@ -67,11 +74,7 @@ var app = {
 							$('#btnforget').prop('disabled', false);
 							}
                         else{
-                           $('#msg').css('display','block');
-							$('#msg').css('color','red');
-							$('#txtUsername').val('');
-							$('#msg').text('Sorry! Mail Id Not Registered With Us');
-							$('#btnforget').prop('disabled', false);
+                           
                         }
                     }
                 });

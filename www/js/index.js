@@ -45,33 +45,33 @@ var app = {
         // Check Login Status Is Localstroage
 
         if (localStorage.login == "false"){
-            // First Check Is Loged In In Database
+            // First Check Is Loged In In Database            
+
             window.setTimeout(function () {
                 window.location.href = "beforelogin.html";
             }, 4000);
         }
         else{
             var datas = { 'user_email': localStorage.getItem('uname')};
-            var urls ="http://spmgroupindia.com/NXIAS_APIS/reg.php";
+            var urls ="https://bebongstore.com/nxias/manage_api/splash_screen_check";
             $.ajax({
                 type: "post",
                 url: urls,
                 data: datas,
-                dataType: "html",
+                dataType: "JSON",
                 success: function (response) {
-                    var resp = response.split('-');
-                    if (resp[0] == 0) {
-                       
+                    if (response.status == 0) {                        
+
                         window.setTimeout(function () {
                             window.location.href = "beforelogin.html";
                         }, 4000);
                     }
                     else {
-                        localStorage.setItem('name', resp[2]);
-                        localStorage.setItem('uname', resp[1]);
+                        localStorage.setItem('name', response.student_arr.name);
+                        localStorage.setItem('uname', response.student_arr.email);
 
-                        localStorage.email = resp[1];
-                        localStorage.name = resp[2];
+                        localStorage.email = response.student_arr.email;
+                        localStorage.name = response.student_arr.name;
                         localStorage.login="true";
 
                         window.setTimeout(function () {

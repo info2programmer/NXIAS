@@ -23,6 +23,7 @@
    <script src='js/jquery-2.2.4.min.js'></script>
     <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/zstyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
     <style>
 body {
@@ -145,13 +146,13 @@ input[type="password"] {
         //console.log(datas);
         $.ajax({
             type: "post",
-            url: "http://spmgroupindia.com/NXIAS_APIS/chkduplicateuser.php",
+            url: "https://bebongstore.com/nxias/manage_api/chkuser",
             data: datas,
-            dataType: "html",
+            dataType: "json",
             success: function (response) {
                 // alert(response);
                 // console.log(response);
-                if (response==0){
+                if (response.status==0){
 					$('#chkuser').css('display','block');
 					$('#chkuser').css('color','green');
 					$('#chkuser').text('Available');
@@ -168,25 +169,7 @@ input[type="password"] {
         });
    }
    
-    function showAlert() {
-        navigator.notification.alert(
-            'Email Already Exist.Please Login.',  // message
-            alertDismissed,         // callback
-            'Already Registered !',            // title
-            'OK'                  // buttonName
-        );
-    }
-	function alertDismissed() {
-        // do something
-    }
-	 function showcnfpass() {
-        navigator.notification.alert(
-            'Password and Confirm Password Do Not Match.',  // message
-            alertDismissed,         // callback
-            'Mismatch!',            // title
-            'OK'                  // buttonName
-        );
-    }
+   
 	
    </script>
 </body>

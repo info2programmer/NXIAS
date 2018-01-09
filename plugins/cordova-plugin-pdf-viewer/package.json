@@ -1,0 +1,54 @@
+{
+  "_from": "cordova-plugin-pdf-viewer",
+  "_id": "cordova-plugin-pdf-viewer@0.0.1",
+  "_inBundle": false,
+  "_integrity": "sha1-qBydhhwdoFMq8sbOlVdz7Gdqmm0=",
+  "_location": "/cordova-plugin-pdf-viewer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-pdf-viewer",
+    "name": "cordova-plugin-pdf-viewer",
+    "escapedName": "cordova-plugin-pdf-viewer",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-pdf-viewer/-/cordova-plugin-pdf-viewer-0.0.1.tgz",
+  "_shasum": "a81c9d861c1da0532af2c6ce955773ec676a9a6d",
+  "_spec": "cordova-plugin-pdf-viewer",
+  "_where": "C:\\wamp64\\www\\NXIAS",
+  "author": {
+    "name": "cdibened"
+  },
+  "bugs": {
+    "url": "https://github.com/cdibened/PDFViewer/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A PDF viewer plugin",
+  "homepage": "https://github.com/cdibened/PDFViewer#readme",
+  "keywords": [
+    "cordova",
+    "pdf",
+    "viewer",
+    "pdf",
+    "viewer"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "cordova-plugin-pdf-viewer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdibened/PDFViewer.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}
