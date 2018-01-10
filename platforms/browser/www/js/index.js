@@ -97,6 +97,7 @@ var app = {
     }
 };
 
+// This Function For Check Internet Connection
 function checkConnection() {
     var networkState = navigator.connection.type;
 

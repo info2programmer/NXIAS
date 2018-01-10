@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("offline", checkConnection, false);
     },
     // deviceready Event Handler
     //
@@ -336,67 +337,21 @@ function updateProfile(updateValue,updateFld,labelName){
     });
 }
 
-// function capture() {
-//     navigator.camera.getPicture(onSuccess, onFail, {
-//         quality: 50,
-//         destinationType: Camera.DestinationType.FILE_URI,
-//         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-//     });
-// }
+// This Function For Check Internet Connection
+function checkConnection() {
+    var networkState = navigator.connection.type;
 
-// function uploadImage() {
-//     // Get URI of picture to upload
-//     navigator.camera.getPicture(
-//         function (uri) {
-//             try {
-//                 // Pick image from div
-//                 var img = document.getElementById('pimage');
-//                 img.style.visibility = "visible";
-//                 img.style.display = "block";
-//                 var imageURI = uri;
-//                 if (!imageURI || (img.style.display == "none")) {
-//                     alert("Tap on picture to select image from gallery.");
-//                     return;
-//                 }
-//                 // Verify server has been entered
-//                 server = "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php";
-//                 console.log("Server " + server);
-//                 if (server) {
-//                     // Specify transfer options
-//                     var options = new FileUploadOptions();
-//                     options.fileKey = "file";
-//                     options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-//                     options.mimeType = "image/jpeg";
-//                     options.chunkedMode = false;
+    var states = {};
+    states[Connection.UNKNOWN] = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI] = 'WiFi connection';
+    states[Connection.CELL_2G] = 'Cell 2G connection';
+    states[Connection.CELL_3G] = 'Cell 3G connection';
+    states[Connection.CELL_4G] = 'Cell 4G connection';
+    states[Connection.CELL] = 'Cell generic connection';
+    states[Connection.NONE] = 'No network connection';
 
-//                     // Transfer picture to server
-//                     var ft = new FileTransfer();
-//                     ft.upload(imageURI, server, function (r) {
-//                         alert("Upload successful: " + r.bytesSent + " bytes uploaded.");
-//                         img.src = uri;
-//                         img.width = 100;
-//                         img.height = 100;
-//                     },
-//                         function (error) {
-//                             alert("Upload failed: Code = " + error.code);
-//                         }, options);
-//                 }
-//                 else {
-//                     alert("Server Not Found");
-//                 }
-//             }
-//             catch (exce) {
-//                 alert(exce);
-//             }
-//         },
-//         function (e) {
-//             console.log("Error getting picture: " + e);
-//             alert("No Image Found");
-//         },
-//         {
-//             quality: 50,
-//             destinationType: navigator.camera.DestinationType.FILE_URI,
-//             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-//         }
-//     );
-// }  
+    // alert('Connection type: ' + states[networkState]);
+    alert('No Internet Connection');
+    // navigator.app.exitApp();
+}
