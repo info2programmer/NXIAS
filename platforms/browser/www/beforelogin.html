@@ -46,6 +46,7 @@
 <link rel="stylesheet" href="css/zstyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
     <style>
+	
 body {
 	background: url(img/images-nxias/beforelogin-bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -65,12 +66,23 @@ body {
    padding:20px;
    background: url(img/images-nxias/splash-bg.jpg) center center fixed;
 }
-
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(img/images-nxias/Eclipse.gif) center no-repeat #fff;
+}
 </style>
     <title>Loding...</title>
 </head>
 
 <body>
+<div class="se-pre-con"></div>
     <div class="topper">
   <img src="img/images-nxias/nxias-logo-round.JPG" width="15%" style="border-radius:50%;" />
   <h1>ANNEX IAS ACADEMY</h1>
@@ -112,6 +124,12 @@ Annex IAS Academy aims to develop amongst its students a competitive attitude al
     <script type="text/javascript">
         app.initialize();
     </script>
+<script>
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
 </body>
 
 </html>

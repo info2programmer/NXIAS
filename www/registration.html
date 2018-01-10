@@ -90,13 +90,24 @@ input[type="password"] {
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
 /* for lgin form */
-
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(img/images-nxias/Eclipse.gif) center no-repeat #fff;
+}
 
 </style>
     <title>Registration</title>
 </head>
 
 <body>
+<div class="se-pre-con"></div>
    <div class="topper">
   <img src="img/images-nxias/nxias-logo-round.JPG" width="15%" style="border-radius:50%;" />
   <h1>ANNEX IAS ACADEMY</h1>
@@ -141,7 +152,6 @@ input[type="password"] {
     <script>(function(window){window.alert=function(text,opo){ navigator.nativeAlert.show(text);};}(window));</script>
    <script>
    function chkuser(uval){
-   
     var datas = { 'user_id': uval };
         //console.log(datas);
         $.ajax({
@@ -172,6 +182,12 @@ input[type="password"] {
    
 	
    </script>
+   <script>
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");
+	});
+</script>
 </body>
 
 </html>

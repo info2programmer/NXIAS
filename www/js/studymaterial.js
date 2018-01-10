@@ -56,6 +56,7 @@ var app = {
         // This Code For Logout
         $('#btnLogout').click(function () {
             // alert();
+			$(".se-pre-con").show();
             var userdata = localStorage.getItem('uname');
             // var userdata = localStorage.email;
             // console.log(userdata);
@@ -65,6 +66,7 @@ var app = {
                 url: "https://bebongstore.com/nxias/manage_api/logout",
                 data: datas,
                 success: function (response) {
+					$(".se-pre-con").hide();
                     da = $.parseJSON(response);
                     if (da.status == 1) {
                         localStorage.email = "";
@@ -178,15 +180,18 @@ var app = {
                 }
             }
             else{
+				
                 $.ajax({
                     type: "post",
                     url: "https://bebongstore.com/nxias/manage_api/searchstudymaterial",
                     data: datas,
 					datatype:'json',
                     beforeSend: function () {
+						$(".se-pre-con").show();
                         $('#studsrch').prop('disabled', true);
                     },
                     success: function (response) {
+						$(".se-pre-con").hide();
                         $('#studsrch').prop('disabled', false);
 						var da = $.parseJSON(response);
                         if (da.status == 1) {

@@ -73,6 +73,7 @@ var app = {
                 }
             }
             else{
+				$(".se-pre-con").show();
                 $.ajax({
                     type: "post",
                     url: "https://bebongstore.com/nxias/manage_api/registration1",
@@ -82,6 +83,7 @@ var app = {
                         $('#btnReg').prop('disabled', true);
                     },
                     success: function (response) {
+						$(".se-pre-con").hide();
                         var da = $.parseJSON(response);
                         // console.log(d.status);
                         $('#btnReg').prop('disabled', false);

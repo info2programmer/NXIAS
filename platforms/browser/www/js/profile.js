@@ -69,6 +69,10 @@ var app = {
             url: urls,
             data: datas,
             dataType: "json",
+            beforeSend: function () {
+                // Animate loader off screen
+                $(".se-pre-con").show();
+            },
             success: function (response) {
                 $('#namef').text(response.stu_arr.name);
                 $('#mailf').text(response.stu_arr.email);
@@ -78,6 +82,7 @@ var app = {
                 $('#statef').text(response.stu_arr.state);
                 $('#cityf').text(response.stu_arr.city);
                 $('#coursef').text(response.stu_arr.course);
+                $(".se-pre-con").hide();
             }
         });
 		

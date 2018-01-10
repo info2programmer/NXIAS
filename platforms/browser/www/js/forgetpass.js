@@ -41,6 +41,7 @@ var app = {
 				
             }  
             else{
+				$(".se-pre-con").show();
                 var user_name=$('#txtUsername').val();
                 var datas = { 'email': user_name};
                 $.ajax({
@@ -52,6 +53,7 @@ var app = {
                         $('#btnforget').prop('disabled', true);
                     },
                     success: function (response) {
+						$(".se-pre-con").hide();
                         da = $.parseJSON(response);
                         if (da.status==0){
                             // $('#msg').css('display','block');

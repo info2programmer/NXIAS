@@ -34,13 +34,14 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         // app.receivedEvent('deviceready');
-
+		$(".se-pre-con").show();
         // Page Onload State Generate 
         $.ajax({
             type: "post",
             url: "https://bebongstore.com/nxias/manage_api/get_state",
             dataType: "json",
             success: function (response) {
+				$(".se-pre-con").hide();
                 // var da = $.parseJSON(response);
                 if (response.status == 1) {
                     $.each(response.states, function (val, text) {

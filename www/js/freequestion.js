@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
+		$(".se-pre-con").show();
         // This Function Get Image From Server
         var urls = "https://bebongstore.com/nxias/manage_api/image_view";
         var userdata = localStorage.getItem('uname');
@@ -44,6 +44,7 @@ var app = {
             data: datas,
             dataType: "json",
             success: function (response) {
+				$(".se-pre-con").hide();
                 pfURL = "http://bebongstore.com/nxias/uploads/student/";
                 if (response.status) {
                     $("#pimage").attr("src", pfURL + response.prof_image);

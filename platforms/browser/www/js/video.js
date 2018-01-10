@@ -40,11 +40,13 @@ var app = {
             // var userdata = localStorage.email;
             // console.log(userdata);
             var datas = { 'email': userdata };
+			$(".se-pre-con").show();
             $.ajax({
                 type: "post",
                 url: "https://bebongstore.com/nxias/manage_api/logout",
                 data: datas,
                 success: function (response) {
+					$(".se-pre-con").hide();
                     da = $.parseJSON(response);
                     if (da.status == 1) {
                         localStorage.email = "";
@@ -55,13 +57,14 @@ var app = {
             });
 
         });
-        
+        $(".se-pre-con").show();
         // app.receivedEvent('deviceready');
 		$.ajax({
             type: "post",
             url: "https://bebongstore.com/nxias/manage_api/get_video",
             dataType: "json",
             success: function (response) {
+				$(".se-pre-con").hide();
                 // var da = $.parseJSON(response);
                 if (response.status == 1) {
                     $.each(response.videos, function (val, text) {
