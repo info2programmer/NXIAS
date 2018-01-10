@@ -180,7 +180,7 @@ var app = {
                 }
             }
             else{
-				
+				$('#allsrchlist').empty();
                 $.ajax({
                     type: "post",
                     url: "https://bebongstore.com/nxias/manage_api/searchstudymaterial",
