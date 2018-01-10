@@ -83,7 +83,6 @@ var app = {
                         $('#btnReg').prop('disabled', true);
                     },
                     success: function (response) {
-						$(".se-pre-con").hide();
                         var da = $.parseJSON(response);
                         // console.log(d.status);
                         $('#btnReg').prop('disabled', false);
