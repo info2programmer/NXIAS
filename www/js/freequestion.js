@@ -33,6 +33,29 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        // This Code For Logout
+        $('#btnLogout').click(function () {
+            // alert();
+            var userdata = localStorage.getItem('uname');
+            // var userdata = localStorage.email;
+            // console.log(userdata);
+            var datas = { 'email': userdata };
+            $.ajax({
+                type: "post",
+                url: "https://bebongstore.com/nxias/manage_api/logout",
+                data: datas,
+                success: function (response) {
+                    da = $.parseJSON(response);
+                    if (da.status == 1) {
+                        localStorage.email = "";
+                        localStorage.login = "false";
+                        window.location.href = "beforelogin.html";
+                    }
+                }
+            });
+
+        });
+
         // app.receivedEvent('deviceready');
 		$.ajax({
             type: "post",

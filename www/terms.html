@@ -63,7 +63,7 @@ body {
     position: absolute;
     top: -50px;
     right: 25px;
-	margin-bottom::50px;
+	margin-bottom:50px;
     font-size: 120px;
     margin-left: 50px;
 	border:none;
@@ -244,6 +244,30 @@ function closeNav() {
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
         app.initialize();
+    </script>
+    <script>
+      // This Code For Logout
+        $('#btnLogout').click(function () {
+          // alert();
+          var userdata = localStorage.getItem('uname');
+          // var userdata = localStorage.email;
+          // console.log(userdata);
+          var datas = { 'email': userdata };
+          $.ajax({
+            type: "post",
+            url: "https://bebongstore.com/nxias/manage_api/logout",
+            data: datas,
+            success: function (response) {
+              da = $.parseJSON(response);
+              if (da.status == 1) {
+                localStorage.email = "";
+                localStorage.login = "false";
+                window.location.href = "beforelogin.html";
+              }
+            }
+          });
+
+        });
     </script>
    
 </body>
