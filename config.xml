@@ -8,6 +8,7 @@
         Projukti Team
     </author>
     <content src="index.html" />
+	<preference name="android-build-tool" value="gradle" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="permissions" value="none" />
@@ -54,11 +55,11 @@
         <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-		<!--<config-file target="AndroidManifest.xml" parent="/manifest">
-        <uses-permission android:name="android.permission.INTERNET"/>
-		<uses-permission android:name="android.permission.RECEIVE_SMS"/>
-		<uses-permission android:name="android.permission.READ_CONTACTS"/>
-    </config-file>-->
+		<feature name="http://api.phonegap.com/1.0/battery" />
+    <feature name="http://api.phonegap.com/1.0/camera" />
+    <feature name="http://api.phonegap.com/1.0/network" />
+    <feature name="http://api.phonegap.com/1.0/notification" />
+	
 	
     </platform>
     <platform name="ios">
