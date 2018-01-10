@@ -444,6 +444,122 @@ module.exports = [
         "clobbers": [
             "PDFViewer"
         ]
+    },
+    {
+        "file": "plugins/code-push/script/acquisition-sdk.js",
+        "id": "code-push.AcquisitionManager",
+        "pluginId": "code-push",
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/browser/FileTransfer.js",
+        "id": "cordova-plugin-file-transfer.BrowserFileTransfer",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-zip/zip.js",
+        "id": "cordova-plugin-zip.Zip",
+        "pluginId": "cordova-plugin-zip",
+        "clobbers": [
+            "zip"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/codePush.js",
+        "id": "cordova-plugin-code-push.codePush",
+        "pluginId": "cordova-plugin-code-push",
+        "clobbers": [
+            "codePush"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/localPackage.js",
+        "id": "cordova-plugin-code-push.localPackage",
+        "pluginId": "cordova-plugin-code-push",
+        "clobbers": [
+            "LocalPackage"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/remotePackage.js",
+        "id": "cordova-plugin-code-push.remotePackage",
+        "pluginId": "cordova-plugin-code-push",
+        "clobbers": [
+            "RemotePackage"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/syncStatus.js",
+        "id": "cordova-plugin-code-push.syncStatus",
+        "pluginId": "cordova-plugin-code-push",
+        "clobbers": [
+            "SyncStatus"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/installMode.js",
+        "id": "cordova-plugin-code-push.installMode",
+        "pluginId": "cordova-plugin-code-push",
+        "clobbers": [
+            "InstallMode"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/codePushUtil.js",
+        "id": "cordova-plugin-code-push.codePushUtil",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/fileUtil.js",
+        "id": "cordova-plugin-code-push.fileUtil",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/httpRequester.js",
+        "id": "cordova-plugin-code-push.httpRequester",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/nativeAppInfo.js",
+        "id": "cordova-plugin-code-push.nativeAppInfo",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/package.js",
+        "id": "cordova-plugin-code-push.package",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-code-push/bin/www/sdk.js",
+        "id": "cordova-plugin-code-push.sdk",
+        "pluginId": "cordova-plugin-code-push",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -467,7 +583,11 @@ module.exports.metadata =
     "cordova-plugin-spinner": "1.1.0",
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-native-transitions": "0.2.3",
-    "cordova-plugin-pdf-viewer": "0.0.1"
+    "cordova-plugin-pdf-viewer": "0.0.1",
+    "code-push": "2.0.4",
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-plugin-zip": "3.1.0",
+    "cordova-plugin-code-push": "1.11.0"
 }
 // BOTTOM OF METADATA
 });
