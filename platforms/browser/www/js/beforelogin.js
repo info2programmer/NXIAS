@@ -27,12 +27,30 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("backbutton", onBackKeyDown, false); 
+
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+
+        // This Function For Exit App
+        function onBackKeyDown(e) {
+            e.preventDefault();
+            navigator.notification.confirm("Are you sure you want to exit ?", onConfirm, "Confirmation", "Yes,No");
+            // Prompt the user with the choice
+        }
+
+        function onConfirm(button) {
+            if (button == 2) {//If User selected No, then we just do nothing
+                return;
+            } else {
+                navigator.app.exitApp();// Otherwise we quit the app.
+            }
+        }
+        
         // app.receivedEvent('deviceready');
 		//SpinnerPlugin.activityStart("Please Wait", "Its loading.....");
 		
