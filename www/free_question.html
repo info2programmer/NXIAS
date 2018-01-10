@@ -21,6 +21,7 @@
 
      <script src='js/jquery-2.2.4.min.js'></script>
     <script src="js/bootstrap.min.js"></script>
+    
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/zstyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
@@ -207,12 +208,22 @@ var txt = dval;
 
 $('.contentname:contains("'+txt+'")').show();
 }
-</script>  
+</script> 
+<script src="js/pulltorefresh.js" type="text/javascript"></script>
+ 
 <script>
 	$(window).load(function() {
 		// Animate loader off screen
 		$(".se-pre-con").fadeOut("slow");
 	});
+	
+	PullToRefresh.init({
+    mainElement: 'body',
+    onRefresh: function(){
+        // What do you want to do when the user does the pull-to-refresh gesture
+        window.location.reload(); 
+    }
+});
 </script>  
 </body>
 
