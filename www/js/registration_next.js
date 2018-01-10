@@ -57,6 +57,7 @@ var app = {
         
         // State Onchange Get City
         $('#state').change(function () { 
+			$(".se-pre-con").show();
             $('#city').empty();
             $('#course').empty();
             var datas = { 'state': $('#state').val()};
@@ -66,6 +67,7 @@ var app = {
                 data:datas,
                 dataType: "json",
                 success: function (response) {
+					$(".se-pre-con").hide();
                     // var da = $.parseJSON(response);
                     if (response.status == 1) {
                         $.each(response.cities, function (val, text) {
@@ -136,6 +138,7 @@ var app = {
                     data: datas,
 					datatype:'json',
                     beforeSend: function () {
+						$(".se-pre-con").show();
                         $('#logbtn').prop('disabled', true);
                     },
                     success: function (response) {
@@ -154,9 +157,11 @@ var app = {
                             window.location.href = "home.html";   
                         }
 						else {
-							$('#msg').css('display','block');
-							$('#msg').css('color','red');
-							$('#msg').text('Slow Day! Please Try Again After Sometime');
+							$(".se-pre-con").hide();
+							//$('#msg').css('display','block');
+//							$('#msg').css('color','red');
+//							$('#msg').text('Slow Day! Please Try Again After Sometime');
+							showAlertcancel();
 						}
                     }
                 });
@@ -198,4 +203,16 @@ function onSuccess(position) {
 function onError(error) {
     alert('code: ' + error.code + '\n' +
         'message: ' + error.message + '\n');
+}
+
+function showAlertcancel() {
+    navigator.notification.alert(
+        'Please Try Again After Sometime.',  // message
+        alertDismissed,         // callback
+        'Slow Day!',            // title
+        'OK'                  // buttonName
+    );
+}
+function alertDismissed() {
+    // do something
 }

@@ -60,7 +60,6 @@ var app = {
                         $('#btnLogin').prop('disabled', true);
                     },
                     success: function (response) {
-						$(".se-pre-con").hide();
                         if (response.status==1){
                             
                             localStorage.setItem('name', response.student_arr.name);
