@@ -309,89 +309,89 @@ var app = {
 };
 
 
-function updateProfile(updateValue,updateFld,labelName){
-    var urls ="https://bebongstore.com/nxias/manage_api/profile_update";
-    datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email,'labelName':labelName};
-    $.ajax({
-        type: "POST",
-        url: urls,
-        data: datas,
-        dataType: 'json',
-        beforeSend: function () {
-            // $('#btnLogin').prop('disabled', true);
-            // Loading Status will be shown here
-        },
-        success: function (response) {
-            if (response.status==1){
-                //alert(updateFld + ' Change To ' + updateValue+' Successfully');
-                window.location.href = "profile.html";				
-				//$('#'+labelName).val(updateValue);
-            }
-        }
-    });
-}
+// function updateProfile(updateValue,updateFld,labelName){
+//     var urls ="https://bebongstore.com/nxias/manage_api/profile_update";
+//     datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email,'labelName':labelName};
+//     $.ajax({
+//         type: "POST",
+//         url: urls,
+//         data: datas,
+//         dataType: 'json',
+//         beforeSend: function () {
+//             // $('#btnLogin').prop('disabled', true);
+//             // Loading Status will be shown here
+//         },
+//         success: function (response) {
+//             if (response.status==1){
+//                 //alert(updateFld + ' Change To ' + updateValue+' Successfully');
+//                 window.location.href = "profile.html";				
+// 				//$('#'+labelName).val(updateValue);
+//             }
+//         }
+//     });
+// }
 
-function capture() {
-    navigator.camera.getPicture(onSuccess, onFail, {
-        quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-    });
-}
+// function capture() {
+//     navigator.camera.getPicture(onSuccess, onFail, {
+//         quality: 50,
+//         destinationType: Camera.DestinationType.FILE_URI,
+//         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+//     });
+// }
 
-function uploadImage() {
-    // Get URI of picture to upload
-    navigator.camera.getPicture(
-        function (uri) {
-            try {
-                // Pick image from div
-                var img = document.getElementById('pimage');
-                img.style.visibility = "visible";
-                img.style.display = "block";
-                var imageURI = uri;
-                if (!imageURI || (img.style.display == "none")) {
-                    alert("Tap on picture to select image from gallery.");
-                    return;
-                }
-                // Verify server has been entered
-                server = "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php";
-                console.log("Server " + server);
-                if (server) {
-                    // Specify transfer options
-                    var options = new FileUploadOptions();
-                    options.fileKey = "file";
-                    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-                    options.mimeType = "image/jpeg";
-                    options.chunkedMode = false;
+// function uploadImage() {
+//     // Get URI of picture to upload
+//     navigator.camera.getPicture(
+//         function (uri) {
+//             try {
+//                 // Pick image from div
+//                 var img = document.getElementById('pimage');
+//                 img.style.visibility = "visible";
+//                 img.style.display = "block";
+//                 var imageURI = uri;
+//                 if (!imageURI || (img.style.display == "none")) {
+//                     alert("Tap on picture to select image from gallery.");
+//                     return;
+//                 }
+//                 // Verify server has been entered
+//                 server = "http://spmgroupindia.com/NXIAS_APIS/upload_profile_img.php";
+//                 console.log("Server " + server);
+//                 if (server) {
+//                     // Specify transfer options
+//                     var options = new FileUploadOptions();
+//                     options.fileKey = "file";
+//                     options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+//                     options.mimeType = "image/jpeg";
+//                     options.chunkedMode = false;
 
-                    // Transfer picture to server
-                    var ft = new FileTransfer();
-                    ft.upload(imageURI, server, function (r) {
-                        alert("Upload successful: " + r.bytesSent + " bytes uploaded.");
-                        img.src = uri;
-                        img.width = 100;
-                        img.height = 100;
-                    },
-                        function (error) {
-                            alert("Upload failed: Code = " + error.code);
-                        }, options);
-                }
-                else {
-                    alert("Server Not Found");
-                }
-            }
-            catch (exce) {
-                alert(exce);
-            }
-        },
-        function (e) {
-            console.log("Error getting picture: " + e);
-            alert("No Image Found");
-        },
-        {
-            quality: 50,
-            destinationType: navigator.camera.DestinationType.FILE_URI,
-            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-        }
-    );
-}  
+//                     // Transfer picture to server
+//                     var ft = new FileTransfer();
+//                     ft.upload(imageURI, server, function (r) {
+//                         alert("Upload successful: " + r.bytesSent + " bytes uploaded.");
+//                         img.src = uri;
+//                         img.width = 100;
+//                         img.height = 100;
+//                     },
+//                         function (error) {
+//                             alert("Upload failed: Code = " + error.code);
+//                         }, options);
+//                 }
+//                 else {
+//                     alert("Server Not Found");
+//                 }
+//             }
+//             catch (exce) {
+//                 alert(exce);
+//             }
+//         },
+//         function (e) {
+//             console.log("Error getting picture: " + e);
+//             alert("No Image Found");
+//         },
+//         {
+//             quality: 50,
+//             destinationType: navigator.camera.DestinationType.FILE_URI,
+//             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+//         }
+//     );
+// }  
