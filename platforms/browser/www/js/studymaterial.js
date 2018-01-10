@@ -34,6 +34,25 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
+        // This Function Get Image From Server
+        var urls = "https://bebongstore.com/nxias/manage_api/image_view";
+        var userdata = localStorage.getItem('uname');
+        var datas = { 'email': userdata };
+        $.ajax({
+            type: "post",
+            url: urls,
+            data: datas,
+            dataType: "json",
+            success: function (response) {
+                pfURL = "http://bebongstore.com/nxias/uploads/student/";
+                if (response.status) {
+                    $("#pimage").attr("src", pfURL + response.prof_image);
+                } else {
+                    $("#pimage").attr("src", pfURL + response.prof_image);
+                }
+            }
+        });
+
         // This Code For Logout
         $('#btnLogout').click(function () {
             // alert();
