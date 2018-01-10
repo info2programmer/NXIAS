@@ -314,27 +314,27 @@ var app = {
 };
 
 
-// function updateProfile(updateValue,updateFld,labelName){
-//     var urls ="https://bebongstore.com/nxias/manage_api/profile_update";
-//     datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email,'labelName':labelName};
-//     $.ajax({
-//         type: "POST",
-//         url: urls,
-//         data: datas,
-//         dataType: 'json',
-//         beforeSend: function () {
-//             // $('#btnLogin').prop('disabled', true);
-//             // Loading Status will be shown here
-//         },
-//         success: function (response) {
-//             if (response.status==1){
-//                 //alert(updateFld + ' Change To ' + updateValue+' Successfully');
-//                 window.location.href = "profile.html";				
-// 				//$('#'+labelName).val(updateValue);
-//             }
-//         }
-//     });
-// }
+function updateProfile(updateValue,updateFld,labelName){
+    var urls ="https://bebongstore.com/nxias/manage_api/profile_update";
+    datas = { 'update_value': updateValue, 'field': updateFld, 'email': localStorage.email,'labelName':labelName};
+    $.ajax({
+        type: "POST",
+        url: urls,
+        data: datas,
+        dataType: 'json',
+        beforeSend: function () {
+            // $('#btnLogin').prop('disabled', true);
+            // Loading Status will be shown here
+        },
+        success: function (response) {
+            if (response.status==1){
+                //alert(updateFld + ' Change To ' + updateValue+' Successfully');
+                window.location.href = "profile.html";				
+				//$('#'+labelName).val(updateValue);
+            }
+        }
+    });
+}
 
 // function capture() {
 //     navigator.camera.getPicture(onSuccess, onFail, {
