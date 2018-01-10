@@ -222,7 +222,9 @@
                 // alert(sendData);
                 var ft = new FileTransfer();
                 ft.upload(imageURI, "https://bebongstore.com/nxias/manage_api/image_upload/"+ localStorage.email, function (result) {
-                    alert('successfully uploaded ' + result.img_data);
+                    da = $.parseJSON(result);
+                    alert('successfully uploaded ' + da.status);
+                    // if(da.st)
                 }, function (error) {
                     alert('error : ' + JSON.stringify(error));
                 }, options);
