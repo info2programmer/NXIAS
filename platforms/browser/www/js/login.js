@@ -50,7 +50,7 @@ var app = {
                 var user_name=$('#txtUsername').val();
                 var password = $('#txtPassword').val();
                 var datas = { 'user_name': user_name, 'password': password};
-               
+               $(".se-pre-con").show();
                 $.ajax({
                     type: "post",
                     url: "http://bebongstore.com/nxias/manage_api/login",
@@ -60,7 +60,7 @@ var app = {
                         $('#btnLogin').prop('disabled', true);
                     },
                     success: function (response) {
-						
+						$(".se-pre-con").hide();
                         if (response.status==1){
                             
                             localStorage.setItem('name', response.student_arr.name);
