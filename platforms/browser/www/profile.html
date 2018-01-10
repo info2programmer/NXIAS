@@ -223,7 +223,7 @@
                 var ft = new FileTransfer();
                 ft.upload(imageURI, "https://bebongstore.com/nxias/manage_api/image_upload/"+ localStorage.email, function (result) {
                     // da = $.parseJSON(result);
-                    alert('successfully uploaded ' + result);
+                    alert('successfully uploaded');
                     // if(da.st)
                 }, function (error) {
                     alert('error : ' + JSON.stringify(error));
@@ -279,7 +279,7 @@
 
                             <div class="form-group text-center" style="margin-bottom:30px;">
                                 <!--<img id="pimage" src="img/images-nxias/profile-image.jpg" width="40%" style="border-radius:50%;" />-->
-								<img width="40%" id="pimage" style="border-radius:50%;" />
+								<img width="40%" id="pimage" style="border-radius:50%; height:353px;" class="img-circle" />
                                 <!-- <input type="file" id="file1" name="image" accept="image/*" capture style="display:none" /> -->
                                 <img src="img/images-nxias/camera.png" width="10%" id="but_take" style="cursor:pointer; margin-left:-100px; margin-bottom:-240px;"
                                 />
